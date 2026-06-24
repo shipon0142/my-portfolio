@@ -13,6 +13,7 @@ jobs:
           fetch-depth: 2
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
+
         with:
           server: ftp.shiponsarder.com
           username: developer@shiponsarder.com
