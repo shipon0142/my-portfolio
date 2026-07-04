@@ -33,11 +33,11 @@ export default function renderNav(data) {
             <span>Resume</span>
           </a>
         </div>
-        <button type="button" class="md:hidden text-ink-primary" aria-label="Open menu" data-menu-toggle>
+        <button type="button" class="md:hidden text-ink-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
           ${icons.menu}
         </button>
       </nav>
-      <div class="md:hidden hidden bg-bg-base border-t border-surface-border" data-mobile-menu>
+      <div id="mobile-menu" class="md:hidden hidden bg-bg-base border-t border-surface-border" data-mobile-menu>
         <div class="px-6 py-4">
           ${mobileLinks}
           <a href="${profile.cvUrl}" download class="mt-4 inline-flex items-center gap-2 font-mono text-sm text-brand-cyan border border-brand-cyan/40 rounded px-3 py-2">

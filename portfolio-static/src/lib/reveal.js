@@ -20,4 +20,16 @@ export function initReveal(selector = '.reveal') {
   );
 
   els.forEach((el) => observer.observe(el));
+
+  requestAnimationFrame(() => {
+    const viewportBottom = window.innerHeight;
+    els.forEach((el) => {
+      if (el.classList.contains('revealed')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewportBottom) {
+        el.classList.add('revealed');
+        observer.unobserve(el);
+      }
+    });
+  });
 }

@@ -36,10 +36,15 @@ initScrollSpy('header nav a[href^="#"]', 'main > section[id]');
 const toggle = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('[data-mobile-menu]');
 if (toggle && menu) {
+  const setOpen = (open) => {
+    menu.classList.toggle('hidden', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
   toggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+    setOpen(menu.classList.contains('hidden'));
   });
   document.querySelectorAll('[data-mobile-link]').forEach((link) => {
-    link.addEventListener('click', () => menu.classList.add('hidden'));
+    link.addEventListener('click', () => setOpen(false));
   });
 }
