@@ -72,7 +72,7 @@
                         <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $user?->address }}</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
                     </div>
-                    <a href="{{ $setting->freelance_url }}" class="btn btn-outline-primary mr-4">Hire Me</a>
+                    <a href="{{ $setting->freelance_url }}" class="btn btn-outline-primary mr-4">Hire M</a>
                     {{-- <a href="" class="btn btn-outline-primary">Learn More</a> --}}
                 </div>
             </div>
