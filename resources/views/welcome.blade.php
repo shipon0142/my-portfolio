@@ -1,132 +1,471 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shipon Sarder — Mobile Application Developer with 5+ years of Android and Flutter experience.">
+    <title>Shipon Sarder — Mobile Application Developer</title>
 
-        <title>Laravel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: { base: '#0a0e1a', alt: '#0f172a' },
+                        surface: { DEFAULT: '#111827', border: '#1f2937' },
+                        ink: { primary: '#e5e7eb', secondary: '#94a3b8', muted: '#64748b' },
+                        brand: { cyan: '#22d3ee', emerald: '#10b981' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+                    },
+                    maxWidth: { content: '72rem' },
+                },
+            },
+        };
+    </script>
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity: 1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.border-gray-200{--tw-border-opacity: 1;border-color:rgb(229 231 235 / var(--tw-border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.text-center{text-align:center}.text-gray-200{--tw-text-opacity: 1;color:rgb(229 231 235 / var(--tw-text-opacity))}.text-gray-300{--tw-text-opacity: 1;color:rgb(209 213 219 / var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-700{--tw-text-opacity: 1;color:rgb(55 65 81 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity: 1;color:rgb(17 24 39 / var(--tw-text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--tw-bg-opacity: 1;background-color:rgb(31 41 55 / var(--tw-bg-opacity))}.dark\:bg-gray-900{--tw-bg-opacity: 1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:border-gray-700{--tw-border-opacity: 1;border-color:rgb(55 65 81 / var(--tw-border-opacity))}.dark\:text-white{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}}
-        </style>
+    <style>
+        body {
+            background:
+                radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.06), transparent 40%),
+                radial-gradient(circle at 80% 40%, rgba(16, 185, 129, 0.04), transparent 40%),
+                #0a0e1a;
+            min-height: 100vh;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #e5e7eb;
+        }
+        :focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; border-radius: 4px; }
+        .reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-brand-cyan focus:text-bg-base focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+<!-- Nav -->
+<header class="fixed top-0 inset-x-0 z-40 backdrop-blur bg-bg-base/70 border-b border-surface-border">
+    <div class="max-w-content mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#hero" class="font-mono text-sm text-brand-cyan tracking-widest">SS<span class="text-ink-secondary">.</span></a>
+        <nav class="hidden md:flex items-center gap-8" id="desktopNav">
+            <a href="#about" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">01.</span> About</a>
+            <a href="#skills" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">02.</span> Skills</a>
+            <a href="#projects" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">03.</span> Projects</a>
+            <a href="#experience" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">04.</span> Experience</a>
+            <a href="#education" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">05.</span> Education</a>
+            <a href="#contact" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan transition-colors"><span class="text-brand-cyan/70">06.</span> Contact</a>
+            <a href="/Shipon_Sarder_CV.pdf" download class="font-mono text-sm px-3 py-1.5 rounded border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 transition-colors">Resume</a>
+        </nav>
+        <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false" class="md:hidden text-ink-primary p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+    <nav id="mobileNav" class="md:hidden hidden border-t border-surface-border bg-bg-base/95 backdrop-blur">
+        <div class="max-w-content mx-auto px-6 py-4 flex flex-col gap-3">
+            <a href="#about" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">01.</span> About</a>
+            <a href="#skills" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">02.</span> Skills</a>
+            <a href="#projects" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">03.</span> Projects</a>
+            <a href="#experience" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">04.</span> Experience</a>
+            <a href="#education" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">05.</span> Education</a>
+            <a href="#contact" class="font-mono text-sm text-ink-secondary hover:text-brand-cyan"><span class="text-brand-cyan/70">06.</span> Contact</a>
+            <a href="/Shipon_Sarder_CV.pdf" download class="font-mono text-sm px-3 py-1.5 rounded border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 text-center">Resume</a>
+        </div>
+    </nav>
+</header>
+
+<main id="main">
+
+    <!-- Hero -->
+    <section id="hero" class="min-h-screen flex items-center px-6 pt-24 pb-16">
+        <div class="max-w-content mx-auto w-full grid md:grid-cols-[1fr_auto] gap-12 items-center">
+            <div class="reveal">
+                <p class="font-mono text-sm text-brand-cyan mb-4">Hi, my name is</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-ink-primary leading-none mb-4">Shipon Sarder.</h1>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-ink-secondary leading-tight mb-6">I build mobile apps people use every day.</h2>
+                <p class="text-lg text-ink-secondary max-w-2xl mb-8 leading-relaxed">5+ years shipping performant, maintainable Android &amp; Flutter apps used by 100K+ people. Currently leading a team of 9 at Envobyte, working with Cloud Vision and ML Kit.</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="mailto:shipon0142@gmail.com" class="inline-flex items-center gap-2 font-mono text-sm px-5 py-3 rounded border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/10 transition-colors">
+                        Get in touch
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="/Shipon_Sarder_CV.pdf" download class="inline-flex items-center gap-2 font-mono text-sm px-5 py-3 rounded border border-surface-border text-ink-secondary hover:border-ink-primary hover:text-ink-primary transition-colors">
+                        Download CV
+                    </a>
                 </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+            </div>
+            <div class="reveal hidden md:flex items-center justify-center">
+                <div class="relative">
+                    <div class="absolute inset-0 rounded-full bg-brand-cyan/20 blur-2xl"></div>
+                    <div class="relative w-56 h-56 rounded-full border-2 border-brand-cyan/40 bg-surface flex items-center justify-center">
+                        <span class="font-mono text-6xl font-bold text-brand-cyan">SS</span>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="px-6 py-24">
+        <div class="max-w-content mx-auto reveal">
+            <div class="flex items-center gap-4 mb-10">
+                <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase">01 &mdash; About</p>
+                <span class="h-px flex-1 bg-surface-border"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink-primary tracking-tight mb-8">A bit about me</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-5 text-ink-secondary text-lg leading-relaxed">
+                    <p>I build mobile applications that people actually use every day. Over the last 5 years I have shipped native Android apps and cross-platform Flutter apps for eCommerce, education, and productivity &mdash; with a strong focus on performance, clean architecture, and code that other engineers can maintain long after I ship it.</p>
+                    <p>Most recently I lead a cross-functional team of 9 at Envobyte, working with Cloud Vision and ML Kit. Before that, I helped grow a cross-border eCommerce app to 100K+ installs in its first 3 months. I care about mentoring, code reviews, and CI/CD that catches problems before users do.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-surface border border-surface-border rounded-xl p-6">
+                        <p class="font-mono text-4xl font-bold text-brand-cyan">5+</p>
+                        <p class="text-sm text-ink-secondary mt-2">Years Experience</p>
+                    </div>
+                    <div class="bg-surface border border-surface-border rounded-xl p-6">
+                        <p class="font-mono text-4xl font-bold text-brand-cyan">100K+</p>
+                        <p class="text-sm text-ink-secondary mt-2">Installs Shipped</p>
+                    </div>
+                    <div class="bg-surface border border-surface-border rounded-xl p-6">
+                        <p class="font-mono text-4xl font-bold text-brand-cyan">4</p>
+                        <p class="text-sm text-ink-secondary mt-2">Companies</p>
+                    </div>
+                    <div class="bg-surface border border-surface-border rounded-xl p-6">
+                        <p class="font-mono text-4xl font-bold text-brand-cyan">9</p>
+                        <p class="text-sm text-ink-secondary mt-2">Team Members Led</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="px-6 py-24">
+        <div class="max-w-content mx-auto reveal">
+            <div class="flex items-center gap-4 mb-10">
+                <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase">02 &mdash; Skills</p>
+                <span class="h-px flex-1 bg-surface-border"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink-primary tracking-tight mb-8">What I work with</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs tracking-widest text-brand-emerald uppercase mb-4">Languages</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Java</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Kotlin</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Dart</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">C</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">C++</span>
+                    </div>
+                </div>
+                <div class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs tracking-widest text-brand-emerald uppercase mb-4">Mobile &amp; UI</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Flutter</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Jetpack Compose</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">XML</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Firebase</span>
+                    </div>
+                </div>
+                <div class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs tracking-widest text-brand-emerald uppercase mb-4">Architecture &amp; Patterns</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">MVVM</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">MVP</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Clean Architecture</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">BLoC</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Provider</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Riverpod</span>
+                    </div>
+                </div>
+                <div class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs tracking-widest text-brand-emerald uppercase mb-4">Other</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">RESTful APIs</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">CI/CD</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Problem Solving</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Competitive Programming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="px-6 py-24">
+        <div class="max-w-content mx-auto reveal">
+            <div class="flex items-center gap-4 mb-10">
+                <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase">03 &mdash; Projects</p>
+                <span class="h-px flex-1 bg-surface-border"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink-primary tracking-tight mb-8">Selected work</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <article class="bg-surface border border-surface-border rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/50 hover:shadow-lg hover:shadow-brand-cyan/5">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-ink-primary">MoveOn Global</h3>
+                        <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-brand-emerald/15 text-brand-emerald border border-brand-emerald/30">live</span>
+                    </div>
+                    <p class="text-ink-secondary mb-4 leading-relaxed">Cross-border eCommerce app that reached 100K+ installs in 3 months.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Flutter</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">BLoC</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Clean Architecture</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">CI/CD</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Sentry</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.moveon.global" target="_blank" rel="noopener" class="font-mono text-sm text-brand-cyan hover:text-brand-emerald transition-colors">Play Store &rarr;</a>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/50 hover:shadow-lg hover:shadow-brand-cyan/5">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-ink-primary">EduTune</h3>
+                        <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-brand-emerald/15 text-brand-emerald border border-brand-emerald/30">live</span>
+                    </div>
+                    <p class="text-ink-secondary mb-4 leading-relaxed">E-learning platform with live streaming classes, LMS, and an online book reader.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Java</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Zoom SDK</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Firebase</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">OneSignal</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.aitl.edutune" target="_blank" rel="noopener" class="font-mono text-sm text-brand-cyan hover:text-brand-emerald transition-colors">Play Store &rarr;</a>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/50 hover:shadow-lg hover:shadow-brand-cyan/5">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-ink-primary">Mojaru</h3>
+                        <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-brand-emerald/15 text-brand-emerald border border-brand-emerald/30">live</span>
+                    </div>
+                    <p class="text-ink-secondary mb-4 leading-relaxed">School management app streamlining tasks for staff, teachers, and students.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Kotlin</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Firebase Realtime DB</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">OneSignal</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.aitl.mojaru" target="_blank" rel="noopener" class="font-mono text-sm text-brand-cyan hover:text-brand-emerald transition-colors">Play Store &rarr;</a>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/50 hover:shadow-lg hover:shadow-brand-cyan/5">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-ink-primary">Ali2BD</h3>
+                        <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-surface-border text-ink-muted border border-surface-border">legacy</span>
+                    </div>
+                    <p class="text-ink-secondary mb-4 leading-relaxed">Shopping app that scraped and displayed real-time product data.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Java</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">XML</span>
+                        <span class="font-mono text-xs px-2 py-1 rounded bg-bg-alt border border-surface-border text-ink-secondary">Jsoup</span>
+                    </div>
+                    <span class="font-mono text-sm text-ink-muted">No longer available</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="px-6 py-24">
+        <div class="max-w-content mx-auto reveal">
+            <div class="flex items-center gap-4 mb-10">
+                <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase">04 &mdash; Experience</p>
+                <span class="h-px flex-1 bg-surface-border"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink-primary tracking-tight mb-8">Where I&rsquo;ve worked</h2>
+
+            <div class="space-y-6">
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-primary">Senior Software Engineer <span class="text-brand-cyan">@ Envobyte Ltd</span></h3>
+                            <p class="text-sm text-ink-muted">Khulna, Bangladesh</p>
+                        </div>
+                        <p class="font-mono text-xs px-2 py-1 rounded bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 whitespace-nowrap">Jan 2026 &mdash; Present</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-ink-secondary">
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Serving as Team Lead, managing and guiding a cross-functional team of 9 members.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Working with Cloud Vision, ML Kit, and image processing technologies.</span></li>
+                    </ul>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-primary">Senior Software Engineer <span class="text-brand-cyan">@ Moveon Technologies Ltd.</span></h3>
+                            <p class="text-sm text-ink-muted">Dhaka, Bangladesh</p>
+                        </div>
+                        <p class="font-mono text-xs px-2 py-1 rounded bg-bg-alt text-ink-secondary border border-surface-border whitespace-nowrap">Dec 2023 &mdash; Dec 2025</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-ink-secondary">
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Developed a cross-border eCommerce app that reached 100K+ installs within 3 months of launch.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Focused on maximum device support for iOS and Android, delivering top performance and user experience.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Mentored juniors, conducted code reviews, improved productivity, and enforced proper doc comments.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Applied Clean Architecture with BLoC to separate UI and business logic for scalable, maintainable code.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Implemented CI/CD pipelines to automate app publishing to the Play Store and App Store, with integrated error notifications via Discord and Sentry.</span></li>
+                    </ul>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-primary">Software Engineer <span class="text-brand-cyan">@ Amreen Info Tech Ltd.</span></h3>
+                            <p class="text-sm text-ink-muted">Khulna, Bangladesh</p>
+                        </div>
+                        <p class="font-mono text-xs px-2 py-1 rounded bg-bg-alt text-ink-secondary border border-surface-border whitespace-nowrap">Mar 2021 &mdash; Nov 2023</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-ink-secondary">
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Developed an e-learning mobile app in Java, featuring live streaming classes, an LMS system, and an online book reader.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Built a school management app in Kotlin, streamlining school tasks for better organization and efficiency.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Integrated Zoom SDK customization for live classes.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Implemented Firebase Realtime Database for real-time messaging and push notifications using Firebase and OneSignal.</span></li>
+                    </ul>
+                </article>
+
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-primary">Junior Software Engineer <span class="text-brand-cyan">@ Ali2BD</span></h3>
+                            <p class="text-sm text-ink-muted">Dhaka, Bangladesh</p>
+                        </div>
+                        <p class="font-mono text-xs px-2 py-1 rounded bg-bg-alt text-ink-secondary border border-surface-border whitespace-nowrap">Mar 2019 &mdash; Dec 2020</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-ink-secondary">
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Developed and maintained the Ali2BD app using Java and XML, providing a seamless shopping experience.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Utilized Jsoup for web scraping to fetch and display real-time product data.</span></li>
+                        <li class="flex gap-3"><span class="text-brand-cyan mt-1">▹</span><span>Optimized app performance and UI for a smooth user experience.</span></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="px-6 py-24">
+        <div class="max-w-content mx-auto reveal">
+            <div class="flex items-center gap-4 mb-10">
+                <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase">05 &mdash; Education</p>
+                <span class="h-px flex-1 bg-surface-border"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink-primary tracking-tight mb-8">Education &amp; certifications</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs text-brand-cyan mb-2">Dec 2015 &mdash; Dec 2019</p>
+                    <h3 class="text-lg font-bold text-ink-primary mb-1">Daffodil International University</h3>
+                    <p class="text-sm text-ink-muted mb-2">Dhaka</p>
+                    <p class="text-ink-secondary">BSc in Computer Science &amp; Engineering</p>
+                </article>
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs text-brand-cyan mb-2">Jan 2011 &mdash; Jan 2013</p>
+                    <h3 class="text-lg font-bold text-ink-primary mb-1">Govt. MM City College</h3>
+                    <p class="text-sm text-ink-muted mb-2">Khulna</p>
+                    <p class="text-ink-secondary">Higher Secondary Certificate (HSC)</p>
+                </article>
+                <article class="bg-surface border border-surface-border rounded-xl p-6">
+                    <p class="font-mono text-xs text-brand-cyan mb-2">Jan 2006 &mdash; Jan 2011</p>
+                    <h3 class="text-lg font-bold text-ink-primary mb-1">Bajua Union High School</h3>
+                    <p class="text-sm text-ink-muted mb-2">Khulna</p>
+                    <p class="text-ink-secondary">Secondary School Certificate (SSC)</p>
+                </article>
+            </div>
+
+            <div class="mt-8">
+                <article class="bg-surface border border-surface-border rounded-xl p-6 flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <p class="font-mono text-xs tracking-widest text-brand-emerald uppercase mb-2">Professional Certification</p>
+                        <h3 class="text-lg font-bold text-ink-primary">Android Application Development</h3>
+                        <p class="text-sm text-ink-secondary">BITM &mdash; Bangladesh Institute of Management</p>
+                    </div>
+                    <span class="font-mono text-xs px-3 py-1 rounded-full bg-brand-emerald/15 text-brand-emerald border border-brand-emerald/30">certified</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="px-6 py-24">
+        <div class="max-w-content mx-auto text-center reveal">
+            <p class="font-mono text-xs tracking-widest text-brand-cyan uppercase mb-4">06 &mdash; Contact</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-ink-primary tracking-tight mb-6">Get in touch</h2>
+            <p class="text-lg text-ink-secondary max-w-2xl mx-auto mb-10 leading-relaxed">Open to remote and Dhaka-based mobile engineering roles. The fastest way to reach me is email &mdash; I usually reply within a day.</p>
+            <a href="mailto:shipon0142@gmail.com" class="inline-flex items-center gap-2 font-mono text-base px-8 py-4 rounded border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/10 transition-colors">
+                Email me
+                <span aria-hidden="true">→</span>
+            </a>
+            <div class="mt-10 flex items-center justify-center gap-6 text-ink-secondary">
+                <a href="mailto:shipon0142@gmail.com" class="hover:text-brand-cyan transition-colors font-mono text-sm">shipon0142@gmail.com</a>
+                <span class="text-ink-muted">·</span>
+                <a href="tel:+8801925727000" class="hover:text-brand-cyan transition-colors font-mono text-sm">+880 1925 727000</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="px-6 py-10 border-t border-surface-border">
+    <div class="max-w-content mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-mono text-xs text-ink-muted">&copy; 2026 Shipon Sarder &mdash; Built with Laravel &amp; Tailwind</p>
+        <div class="flex items-center gap-5">
+            <a href="https://github.com/shipon0142" target="_blank" rel="noopener" aria-label="GitHub" class="text-ink-secondary hover:text-brand-cyan transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.26 5.69.41.35.78 1.05.78 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/shipon-sarder-900727102" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-ink-secondary hover:text-brand-cyan transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+            </a>
+            <a href="mailto:shipon0142@gmail.com" aria-label="Email" class="text-ink-secondary hover:text-brand-cyan transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M22 6l-10 7L2 6"/></svg>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    (function () {
+        var btn = document.getElementById('menuBtn');
+        var nav = document.getElementById('mobileNav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+            var open = !nav.classList.contains('hidden');
+            nav.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                nav.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+
+    // Reveal on scroll
+    (function () {
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            els.forEach(function (el) { el.classList.add('revealed'); });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+        els.forEach(function (el) { io.observe(el); });
+    })();
+</script>
+
+</body>
 </html>
