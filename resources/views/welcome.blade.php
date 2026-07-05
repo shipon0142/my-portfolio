@@ -18,6 +18,12 @@
             } catch (e) {
                 document.documentElement.dataset.theme = 'light';
             }
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
         })();
     </script>
 
@@ -141,15 +147,23 @@
         }
         .chip:hover { border-color: var(--accent); color: var(--ink-primary); }
         .reveal {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        html.js-loaded .reveal:not(.revealed) {
             opacity: 0;
             transform: translateY(0.5rem);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         .reveal-child > * {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        html.js-loaded .reveal-child:not(.revealed) > * {
             opacity: 0;
             transform: translateY(0.5rem);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
         .reveal-child.revealed > * { opacity: 1; transform: translateY(0); }
         .reveal-child.revealed > *:nth-child(1) { transition-delay: 0ms; }
@@ -617,6 +631,13 @@
             els.forEach(function (el) { el.classList.add('revealed'); });
             return;
         }
+        // Reveal in-viewport elements first, then mark js-loaded (which hides remaining offscreen elements ready to animate)
+        var vh = window.innerHeight;
+        els.forEach(function (el) {
+            var rect = el.getBoundingClientRect();
+            if (rect.top < vh) el.classList.add('revealed');
+        });
+        document.documentElement.classList.add('js-loaded');
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
@@ -625,19 +646,15 @@
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function (el) { io.observe(el); });
-
-        requestAnimationFrame(function () {
-            var vh = window.innerHeight;
-            els.forEach(function (el) {
-                if (el.classList.contains('revealed')) return;
-                var rect = el.getBoundingClientRect();
-                if (rect.top < vh) {
-                    el.classList.add('revealed');
-                    io.unobserve(el);
-                }
-            });
+        els.forEach(function (el) {
+            if (!el.classList.contains('revealed')) io.observe(el);
         });
+        // Safety net: if for any reason an element stays hidden after 2s, reveal it
+        setTimeout(function () {
+            document.querySelectorAll('.reveal:not(.revealed), .reveal-child:not(.revealed)').forEach(function (el) {
+                el.classList.add('revealed');
+            });
+        }, 2000);
     })();
 
     // Scroll spy
