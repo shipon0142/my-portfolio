@@ -290,9 +290,7 @@
         </a>
         <div class="hidden md:flex items-center gap-7">
             @foreach ($nav as $item)
-                <a href="#{{ $item['id'] }}" class="nav-link group text-sm text-ink-secondary hover:text-ink-primary transition-colors">
-                    <span class="font-mono text-[0.7rem] text-ink-muted mr-1.5 group-hover:text-accent transition-colors">{{ $item['num'] }}</span>{{ $item['label'] }}
-                </a>
+                <a href="#{{ $item['id'] }}" class="nav-link text-sm text-ink-secondary hover:text-ink-primary transition-colors">{{ $item['label'] }}</a>
             @endforeach
             <button type="button" class="p-2 text-ink-secondary hover:text-accent transition-colors" data-theme-toggle aria-label="Switch theme">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
@@ -305,9 +303,7 @@
     <div id="mobile-menu" class="md:hidden hidden bg-base border-t border-border" data-mobile-menu>
         <div class="px-6 py-4">
             @foreach ($nav as $item)
-                <a href="#{{ $item['id'] }}" class="block py-3 border-b border-border text-ink-secondary" data-mobile-link>
-                    <span class="font-mono text-xs text-ink-muted mr-2">{{ $item['num'] }}</span>{{ $item['label'] }}
-                </a>
+                <a href="#{{ $item['id'] }}" class="block py-3 border-b border-border text-ink-secondary" data-mobile-link>{{ $item['label'] }}</a>
             @endforeach
             <div class="mt-4 flex items-center justify-between">
                 <a href="/Shipon_Sarder_CV.pdf" download class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded px-3 py-2">
