@@ -289,10 +289,10 @@
 
 @php
     $nav = [
+        ['id' => 'about',        'label' => 'About'],
         ['id' => 'work',         'label' => 'Work'],
         ['id' => 'journey',      'label' => 'Experience'],
         ['id' => 'skills',       'label' => 'Stack'],
-        ['id' => 'about',        'label' => 'About'],
         ['id' => 'credentials',  'label' => 'Credentials'],
         ['id' => 'contact',      'label' => 'Contact'],
     ];
@@ -511,12 +511,57 @@
         </div>
     </section>
 
+    {{-- About --}}
+    <section id="about" class="py-24 md:py-32 bg-surface border-t border-border">
+        <div class="max-w-content mx-auto px-6">
+            <div class="reveal max-w-2xl mb-14">
+                <p class="label-mono">About · 01</p>
+                <h2 class="mt-4 section-title">A bit about me.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-10 md:gap-14 items-start">
+                <div class="md:col-span-4 lg:col-span-3 reveal">
+                    <div class="relative">
+                        <img src="/avatar.jpg" alt="Shipon Sarder" width="280" height="280" class="w-56 h-56 md:w-full md:h-auto md:aspect-square rounded-2xl object-cover border border-border">
+                        <div class="absolute -bottom-3 -right-3 hidden md:flex items-center gap-2 px-3 py-2 rounded-lg bg-base border border-border font-mono text-[11px] text-ink-secondary uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot" aria-hidden="true"></span>
+                            Dhaka, BD
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-8 lg:col-span-9 reveal">
+                    <div class="space-y-5 text-[17px] leading-[1.7] text-ink-secondary">
+                        <p>
+                            I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
+                        </p>
+                        <p>
+                            At Envobyte I lead a team of nine engineers building on Cloud Vision and ML Kit. Before that, I shipped MoveOn Global — a cross-border eCommerce app that reached 100K+ installs in three months. What I care about: mentorship, thorough code review, and CI/CD that catches issues before users do.
+                        </p>
+                        <p>
+                            Outside of work I stay sharp with competitive programming and I'm quietly interested in on-device ML for mobile.
+                        </p>
+                    </div>
+
+                    <dl class="mt-12 pt-10 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-8">
+                        @foreach ($stats as $s)
+                            <div>
+                                <dt class="label-mono">{{ $s['label'] }}</dt>
+                                <dd class="mt-2 display-sans-light text-3xl md:text-4xl text-ink-primary">{{ $s['value'] }}</dd>
+                            </div>
+                        @endforeach
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- Selected Work --}}
     <section id="work" class="py-24 md:py-32 border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
                 <div class="max-w-2xl">
-                    <p class="label-mono">Selected Work · 01</p>
+                    <p class="label-mono">Selected Work · 02</p>
                     <h2 class="mt-4 section-title">Apps in production.</h2>
                 </div>
                 <p class="text-ink-secondary max-w-md text-[15px] leading-relaxed">
@@ -568,7 +613,7 @@
     <section id="journey" class="py-24 md:py-32 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="reveal max-w-2xl mb-14">
-                <p class="label-mono">Experience · 02</p>
+                <p class="label-mono">Experience · 03</p>
                 <h2 class="mt-4 section-title">Where I've been.</h2>
             </div>
 
@@ -607,7 +652,7 @@
     <section id="skills" class="py-24 md:py-32 border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="reveal max-w-2xl mb-14">
-                <p class="label-mono">Stack · 03</p>
+                <p class="label-mono">Stack · 04</p>
                 <h2 class="mt-4 section-title">Tools I reach for.</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -624,51 +669,6 @@
                         </ul>
                     </div>
                 @endforeach
-            </div>
-        </div>
-    </section>
-
-    {{-- About --}}
-    <section id="about" class="py-24 md:py-32 bg-surface border-t border-border">
-        <div class="max-w-content mx-auto px-6">
-            <div class="reveal max-w-2xl mb-14">
-                <p class="label-mono">About · 04</p>
-                <h2 class="mt-4 section-title">A bit about me.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-12 gap-10 md:gap-14 items-start">
-                <div class="md:col-span-4 lg:col-span-3 reveal">
-                    <div class="relative">
-                        <img src="/avatar.jpg" alt="Shipon Sarder" width="280" height="280" class="w-56 h-56 md:w-full md:h-auto md:aspect-square rounded-2xl object-cover border border-border">
-                        <div class="absolute -bottom-3 -right-3 hidden md:flex items-center gap-2 px-3 py-2 rounded-lg bg-base border border-border font-mono text-[11px] text-ink-secondary uppercase tracking-widest">
-                            <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot" aria-hidden="true"></span>
-                            Dhaka, BD
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:col-span-8 lg:col-span-9 reveal">
-                    <div class="space-y-5 text-[17px] leading-[1.7] text-ink-secondary">
-                        <p>
-                            I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
-                        </p>
-                        <p>
-                            At Envobyte I lead a team of nine engineers building on Cloud Vision and ML Kit. Before that, I shipped MoveOn Global — a cross-border eCommerce app that reached 100K+ installs in three months. What I care about: mentorship, thorough code review, and CI/CD that catches issues before users do.
-                        </p>
-                        <p>
-                            Outside of work I stay sharp with competitive programming and I'm quietly interested in on-device ML for mobile.
-                        </p>
-                    </div>
-
-                    <dl class="mt-12 pt-10 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-8">
-                        @foreach ($stats as $s)
-                            <div>
-                                <dt class="label-mono">{{ $s['label'] }}</dt>
-                                <dd class="mt-2 display-sans-light text-3xl md:text-4xl text-ink-primary">{{ $s['value'] }}</dd>
-                            </div>
-                        @endforeach
-                    </dl>
-                </div>
             </div>
         </div>
     </section>
