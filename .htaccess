@@ -14,6 +14,13 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    # Serve static assets from public/ folder when they exist there
+    # (avatar.jpg, favicon.svg, Shipon_Sarder_CV.pdf, robots.txt, etc.)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
