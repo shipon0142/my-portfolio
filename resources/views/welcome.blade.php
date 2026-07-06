@@ -510,7 +510,7 @@
                 <div>
                     <p class="label-mono">Founder</p>
                     <p class="mt-1.5 text-[13.5px] font-semibold tracking-tight text-ink-primary">
-                        Rovex<span class="text-accent">Labs</span>
+                        Rovex<span style="color:#4a86ff;">Labs</span>
                     </p>
                     <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
                 </div>
