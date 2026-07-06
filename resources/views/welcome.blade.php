@@ -266,7 +266,6 @@
 @php
     $nav = [
         ['id' => 'skills',       'label' => 'Skills'],
-        ['id' => 'about',        'label' => 'About'],
         ['id' => 'projects',     'label' => 'Projects'],
         ['id' => 'journey',      'label' => 'Experience'],
         ['id' => 'credentials',  'label' => 'Credentials'],
@@ -574,44 +573,12 @@
         </div>
     </section>
 
-    {{-- About --}}
-    <section id="about" class="py-20 md:py-24 border-t border-border">
-        <div class="max-w-content mx-auto px-6">
-            <div class="max-w-2xl mb-10">
-                <p class="label-mono">About · 02</p>
-                <h2 class="mt-3 section-title">A bit about me.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
-                <div class="md:col-span-4 lg:col-span-3">
-                    <div class="relative max-w-[220px] md:max-w-none">
-                        <img src="/avatar.jpg" alt="Shipon Sarder" width="240" height="240" class="w-40 h-40 md:w-full md:h-auto md:aspect-square rounded-xl object-cover border border-border">
-                    </div>
-                </div>
-
-                <div class="md:col-span-8 lg:col-span-9">
-                    <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
-                        <p>
-                            I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
-                        </p>
-                        <p>
-                            At Envobyte I lead a team of nine engineers building on Cloud Vision and ML Kit. Before that, I shipped MoveOn Global — a cross-border eCommerce app that reached 100K+ installs in three months. What I care about: mentorship, thorough code review, and CI/CD that catches issues before users do.
-                        </p>
-                        <p>
-                            Outside of work I stay sharp with competitive programming and I'm quietly interested in on-device ML for mobile.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     {{-- Personal Projects (dummy data) --}}
     <section id="projects" class="py-20 md:py-24 border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
                 <div class="max-w-2xl">
-                    <p class="label-mono">Personal Projects · 03</p>
+                    <p class="label-mono">Personal Projects · 02</p>
                     <h2 class="mt-3 section-title">Things I'm building.</h2>
                 </div>
                 <p class="text-ink-secondary max-w-md text-[14px] leading-relaxed">
@@ -648,7 +615,7 @@
     <section id="journey" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-2xl mb-10">
-                <p class="label-mono">Experience · 04</p>
+                <p class="label-mono">Experience · 03</p>
                 <h2 class="mt-3 section-title">Where I've been.</h2>
             </div>
 
@@ -687,7 +654,7 @@
     <section id="credentials" class="py-20 md:py-24 border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-2xl mb-10">
-                <p class="label-mono">Credentials · 05</p>
+                <p class="label-mono">Credentials · 04</p>
                 <h2 class="mt-3 section-title">Education & Certifications.</h2>
             </div>
 
@@ -728,7 +695,7 @@
     <section id="contact" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-3xl">
-                <p class="label-mono">Contact · 06</p>
+                <p class="label-mono">Contact · 05</p>
                 <h2 class="mt-3 display-sans text-ink-primary" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
                     Let's talk<span class="text-accent">.</span>
                 </h2>
