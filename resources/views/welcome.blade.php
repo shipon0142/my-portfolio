@@ -460,13 +460,13 @@
 
             <div class="mt-8">
                 <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
-                    <div class="md:col-span-4 lg:col-span-3">
-                        <div class="relative max-w-[220px] md:max-w-none">
+                    <div class="md:col-span-4 lg:col-span-3 md:order-2">
+                        <div class="relative max-w-[220px] md:max-w-none md:ml-auto">
                             <img src="/avatar.jpg" alt="Shipon Sarder" width="240" height="240" class="w-40 h-40 md:w-full md:h-auto md:aspect-square rounded-xl object-cover border border-border">
                         </div>
                     </div>
 
-                    <div class="md:col-span-8 lg:col-span-9">
+                    <div class="md:col-span-8 lg:col-span-9 md:order-1">
                         <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
                             <p>
                                 I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
