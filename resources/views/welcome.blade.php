@@ -458,9 +458,34 @@
                 Shipon Sarder<span class="text-accent">.</span>
             </h1>
 
-            <p class="mt-6 max-w-2xl text-[16px] md:text-[17.5px] text-ink-secondary leading-[1.6]">
-                Software Engineer building mobile-first products that scale — 100K+ installs shipped, currently leading nine engineers at Envobyte.
-            </p>
+            <div class="mt-8">
+                <div class="max-w-2xl mb-8">
+                    <p class="label-mono">About · 02</p>
+                    <h2 class="mt-3 section-title">A bit about me.</h2>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+                    <div class="md:col-span-4 lg:col-span-3">
+                        <div class="relative max-w-[220px] md:max-w-none">
+                            <img src="/avatar.jpg" alt="Shipon Sarder" width="240" height="240" class="w-40 h-40 md:w-full md:h-auto md:aspect-square rounded-xl object-cover border border-border">
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-8 lg:col-span-9">
+                        <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
+                            <p>
+                                I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
+                            </p>
+                            <p>
+                                At Envobyte I lead a team of nine engineers building on Cloud Vision and ML Kit. Before that, I shipped MoveOn Global — a cross-border eCommerce app that reached 100K+ installs in three months. What I care about: mentorship, thorough code review, and CI/CD that catches issues before users do.
+                            </p>
+                            <p>
+                                Outside of work I stay sharp with competitive programming and I'm quietly interested in on-device ML for mobile.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="mt-8 flex flex-wrap items-center gap-3">
                 <a href="#skills" class="inline-flex items-center gap-2 text-[13.5px] font-medium hover:opacity-90 transition-opacity rounded-md px-4 py-2.5" style="background: var(--ink-primary); color: var(--bg-base);">
