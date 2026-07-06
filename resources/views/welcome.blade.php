@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Shipon Sarder — Software Engineer building mobile-first products that scale. 100K+ installs, 5+ years shipping Android and Flutter.">
     <title>Shipon Sarder — Software Engineer</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -721,36 +722,125 @@
     {{-- Contact --}}
     <section id="contact" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
-            <div class="max-w-3xl">
-                <p class="label-mono">Contact</p>
-                <h2 class="mt-3 display-sans text-ink-primary" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
-                    Let's talk<span class="text-accent">.</span>
-                </h2>
-                <p class="mt-5 text-[15px] md:text-[16px] text-ink-secondary leading-[1.6] max-w-2xl">
-                    Open to remote or Dhaka-based senior software roles. Email is fastest — I reply within a day.
-                </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                {{-- Left column: existing content --}}
+                <div>
+                    <p class="label-mono">Contact</p>
+                    <h2 class="mt-3 display-sans text-ink-primary" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
+                        Let's talk<span class="text-accent">.</span>
+                    </h2>
+                    <p class="mt-5 text-[15px] md:text-[16px] text-ink-secondary leading-[1.6] max-w-2xl">
+                        Open to remote or Dhaka-based senior software roles. Email is fastest — I reply within a day.
+                    </p>
 
-                <a href="mailto:shipon0142@gmail.com" class="link-underline mt-8 inline-flex display-sans-light text-xl md:text-3xl text-accent">
-                    shipon0142@gmail.com
-                </a>
+                    <a href="mailto:shipon0142@gmail.com" class="link-underline mt-8 inline-flex display-sans-light text-xl md:text-3xl text-accent">
+                        shipon0142@gmail.com
+                    </a>
 
-                <div class="mt-10 pt-6 border-t border-border flex flex-wrap items-center gap-5 md:gap-7 text-ink-secondary">
-                    <a href="https://github.com/shipon0142" target="_blank" rel="noopener noreferrer" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.19.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.16 0 .3.21.67.8.55C20.21 21.4 23.5 17.09 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
-                        GitHub
-                    </a>
-                    <a href="https://linkedin.com/in/shipon-sarder-900727102" target="_blank" rel="noopener noreferrer" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM19 19h-3v-4.74c0-1.13-.02-2.58-1.57-2.58-1.57 0-1.81 1.23-1.81 2.5V19h-3v-9h2.88v1.23h.04a3.16 3.16 0 012.85-1.56c3.05 0 3.61 2 3.61 4.61z"/></svg>
-                        LinkedIn
-                    </a>
-                    <a href="tel:+8801925727000" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
-                        WhatsApp
-                    </a>
-                    <a href="mailto:shipon0142@gmail.com" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-                        Email
-                    </a>
+                    <div class="mt-10 pt-6 border-t border-border flex flex-wrap items-center gap-5 md:gap-7 text-ink-secondary">
+                        <a href="https://github.com/shipon0142" target="_blank" rel="noopener noreferrer" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.19.69-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.16 0 .3.21.67.8.55C20.21 21.4 23.5 17.09 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/shipon-sarder-900727102" target="_blank" rel="noopener noreferrer" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM19 19h-3v-4.74c0-1.13-.02-2.58-1.57-2.58-1.57 0-1.81 1.23-1.81 2.5V19h-3v-9h2.88v1.23h.04a3.16 3.16 0 012.85-1.56c3.05 0 3.61 2 3.61 4.61z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="tel:+8801925727000" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:shipon0142@gmail.com" class="link-underline inline-flex items-center gap-2 text-[13.5px] hover:text-ink-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Right column: form or success block --}}
+                <div data-contact-panel>
+                    @if(session('contact.success'))
+                        <div data-contact-success class="flex flex-col items-start gap-4 py-8">
+                            <div class="w-10 h-10 rounded-full bg-accent-faint flex items-center justify-center text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                            </div>
+                            <p class="text-[15px] md:text-[16px] text-ink-primary leading-[1.6]">
+                                Thanks — I'll get back to you within a day.
+                            </p>
+                        </div>
+                    @else
+                        <p class="label-mono">Send a message</p>
+                        <form data-contact-form action="{{ route('contact.send') }}" method="POST" class="mt-6 space-y-5" novalidate>
+                            @csrf
+
+                            {{-- Honeypot: off-screen, ignored by real users --}}
+                            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                                <label for="contact-website">Website</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" value="">
+                            </div>
+
+                            <div>
+                                <label for="contact-name" class="label-mono block">Name</label>
+                                <input
+                                    type="text"
+                                    id="contact-name"
+                                    name="name"
+                                    maxlength="100"
+                                    required
+                                    class="mt-2 w-full bg-transparent border-0 border-b border-border focus:border-accent focus:ring-0 focus:outline-none text-[15px] text-ink-primary placeholder:text-ink-muted py-2 px-0"
+                                    aria-describedby="contact-name-error"
+                                    value="{{ old('name') }}"
+                                >
+                                <p id="contact-name-error" data-error-for="name" class="mt-1.5 text-[12px] text-red-500 min-h-[1rem]">@error('name'){{ $message }}@enderror</p>
+                            </div>
+
+                            <div>
+                                <label for="contact-email" class="label-mono block">Email</label>
+                                <input
+                                    type="email"
+                                    id="contact-email"
+                                    name="email"
+                                    maxlength="150"
+                                    required
+                                    class="mt-2 w-full bg-transparent border-0 border-b border-border focus:border-accent focus:ring-0 focus:outline-none text-[15px] text-ink-primary placeholder:text-ink-muted py-2 px-0"
+                                    aria-describedby="contact-email-error"
+                                    value="{{ old('email') }}"
+                                >
+                                <p id="contact-email-error" data-error-for="email" class="mt-1.5 text-[12px] text-red-500 min-h-[1rem]">@error('email'){{ $message }}@enderror</p>
+                            </div>
+
+                            <div>
+                                <label for="contact-message" class="label-mono block">Message</label>
+                                <textarea
+                                    id="contact-message"
+                                    name="message"
+                                    rows="5"
+                                    maxlength="2000"
+                                    required
+                                    class="mt-2 w-full bg-transparent border-0 border-b border-border focus:border-accent focus:ring-0 focus:outline-none text-[15px] text-ink-primary placeholder:text-ink-muted py-2 px-0 resize-y"
+                                    aria-describedby="contact-message-error"
+                                >{{ old('message') }}</textarea>
+                                <p id="contact-message-error" data-error-for="message" class="mt-1.5 text-[12px] text-red-500 min-h-[1rem]">@error('message'){{ $message }}@enderror</p>
+                            </div>
+
+                            <div class="flex flex-col items-end gap-3">
+                                <button
+                                    type="submit"
+                                    data-contact-submit
+                                    class="inline-flex items-center gap-2 bg-accent hover:bg-accent-soft text-white font-medium text-[13.5px] px-5 py-2.5 rounded-sm transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                                >
+                                    <span data-submit-label>Send message</span>
+                                    <svg data-submit-spinner class="hidden w-4 h-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+                                    </svg>
+                                </button>
+                                <p data-contact-status class="text-[12.5px] text-ink-secondary min-h-[1.25rem] w-full text-right">
+                                    @if(session('contact.error')){{ session('contact.error') }}@endif
+                                </p>
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -864,6 +954,93 @@
         }
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // Contact form: fetch-based submit with in-place success swap
+    (function () {
+        var form = document.querySelector('[data-contact-form]');
+        if (!form) return;
+
+        var panel = document.querySelector('[data-contact-panel]');
+        var submit = form.querySelector('[data-contact-submit]');
+        var label = form.querySelector('[data-submit-label]');
+        var spinner = form.querySelector('[data-submit-spinner]');
+        var status = form.querySelector('[data-contact-status]');
+        var tokenMeta = document.querySelector('meta[name="csrf-token"]');
+        var token = tokenMeta ? tokenMeta.getAttribute('content') : '';
+
+        function clearErrors() {
+            form.querySelectorAll('[data-error-for]').forEach(function (el) { el.textContent = ''; });
+            if (status) status.textContent = '';
+        }
+
+        function showFieldError(field, message) {
+            var el = form.querySelector('[data-error-for="' + field + '"]');
+            if (el) el.textContent = message;
+        }
+
+        function setSubmitting(on) {
+            submit.disabled = on;
+            if (label) label.textContent = on ? 'Sending…' : 'Send message';
+            if (spinner) spinner.classList.toggle('hidden', !on);
+        }
+
+        function renderSuccess() {
+            panel.innerHTML =
+                '<div data-contact-success class="flex flex-col items-start gap-4 py-8">' +
+                    '<div class="w-10 h-10 rounded-full bg-accent-faint flex items-center justify-center text-accent">' +
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>' +
+                    '</div>' +
+                    '<p class="text-[15px] md:text-[16px] text-ink-primary leading-[1.6]">Thanks — I\'ll get back to you within a day.</p>' +
+                '</div>';
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearErrors();
+            setSubmitting(true);
+
+            fetch(form.getAttribute('action'), {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: new FormData(form)
+            })
+                .then(function (res) {
+                    return res.json().catch(function () { return { ok: false, message: 'Unexpected response.' }; })
+                        .then(function (body) { return { status: res.status, body: body }; });
+                })
+                .then(function (r) {
+                    if (r.status === 200 && r.body.ok) {
+                        renderSuccess();
+                        return;
+                    }
+                    if (r.status === 422 && r.body.errors) {
+                        Object.keys(r.body.errors).forEach(function (field) {
+                            var msgs = r.body.errors[field];
+                            showFieldError(field, Array.isArray(msgs) ? msgs[0] : String(msgs));
+                        });
+                        var first = form.querySelector('[data-error-for]:not(:empty)');
+                        if (first) {
+                            var name = first.getAttribute('data-error-for');
+                            var input = form.querySelector('[name="' + name + '"]');
+                            if (input) input.focus();
+                        }
+                        setSubmitting(false);
+                        return;
+                    }
+                    // 429, 502, 503, other
+                    if (status) status.textContent = r.body.message || 'Something went wrong. Please email shipon0142@gmail.com directly.';
+                    setSubmitting(false);
+                })
+                .catch(function () {
+                    if (status) status.textContent = 'Network error. Please email shipon0142@gmail.com directly.';
+                    setSubmitting(false);
+                });
+        });
     })();
 </script>
 
