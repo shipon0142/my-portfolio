@@ -524,7 +524,7 @@
     <section id="skills" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-2xl mb-10">
-                <p class="label-mono">Skills · 01</p>
+                <p class="label-mono">Skills</p>
                 <h2 class="mt-3 section-title">What I build with.</h2>
                 <p class="mt-3 text-ink-secondary text-[14.5px] leading-relaxed">
                     Core competencies first, then the full stack. Depth in mobile, patterns, and delivery — with a bias for code that lasts.
@@ -578,7 +578,7 @@
         <div class="max-w-content mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
                 <div class="max-w-2xl">
-                    <p class="label-mono">Personal Projects · 02</p>
+                    <p class="label-mono">Personal Projects</p>
                     <h2 class="mt-3 section-title">Things I'm building.</h2>
                 </div>
                 <p class="text-ink-secondary max-w-md text-[14px] leading-relaxed">
@@ -615,7 +615,7 @@
     <section id="journey" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-2xl mb-10">
-                <p class="label-mono">Experience · 03</p>
+                <p class="label-mono">Experience</p>
                 <h2 class="mt-3 section-title">Where I've been.</h2>
             </div>
 
@@ -654,7 +654,7 @@
     <section id="credentials" class="py-20 md:py-24 border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-2xl mb-10">
-                <p class="label-mono">Credentials · 04</p>
+                <p class="label-mono">Credentials</p>
                 <h2 class="mt-3 section-title">Education & Certifications.</h2>
             </div>
 
@@ -695,7 +695,7 @@
     <section id="contact" class="py-20 md:py-24 bg-surface border-t border-border">
         <div class="max-w-content mx-auto px-6">
             <div class="max-w-3xl">
-                <p class="label-mono">Contact · 05</p>
+                <p class="label-mono">Contact</p>
                 <h2 class="mt-3 display-sans text-ink-primary" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
                     Let's talk<span class="text-accent">.</span>
                 </h2>
