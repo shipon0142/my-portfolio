@@ -459,11 +459,6 @@
             </h1>
 
             <div class="mt-8">
-                <div class="max-w-2xl mb-8">
-                    <p class="label-mono">About · 02</p>
-                    <h2 class="mt-3 section-title">A bit about me.</h2>
-                </div>
-
                 <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
                     <div class="md:col-span-4 lg:col-span-3">
                         <div class="relative max-w-[220px] md:max-w-none">
