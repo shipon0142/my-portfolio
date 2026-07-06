@@ -495,7 +495,7 @@
                 </a>
             </div>
 
-            <div class="mt-14 pt-6 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-4xl">
+            <div class="mt-14 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8 max-w-2xl">
                 <div>
                     <p class="label-mono">Currently</p>
                     <p class="mt-1.5 text-[13.5px] text-ink-primary">Senior Software Engineer</p>
@@ -505,16 +505,6 @@
                     <p class="label-mono">Experience</p>
                     <p class="mt-1.5 text-[13.5px] text-ink-primary">5+ years shipping</p>
                     <p class="text-[13px] text-ink-secondary">Android · Flutter</p>
-                </div>
-                <div>
-                    <p class="label-mono">Scale</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-primary">100K+ installs</p>
-                    <p class="text-[13px] text-ink-secondary">Live on Play Store</p>
-                </div>
-                <div>
-                    <p class="label-mono">Team</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-primary">Leading 9 engineers</p>
-                    <p class="text-[13px] text-ink-secondary">Cross-functional</p>
                 </div>
             </div>
         </div>
