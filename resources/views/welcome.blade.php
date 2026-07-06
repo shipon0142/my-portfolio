@@ -510,7 +510,10 @@
                 <div>
                     <p class="label-mono">Founder</p>
                     <p class="mt-1.5 text-[13.5px] text-ink-primary">Rovex Labs</p>
-                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
+                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline inline-flex items-center gap-1.5 text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">
+                        <img src="/rovex-labs-mark.png" alt="" width="14" height="14" class="w-3.5 h-3.5 rounded-sm object-contain" aria-hidden="true">
+                        rovexlabs.com
+                    </a>
                 </div>
                 <div>
                     <p class="label-mono">Currently</p>
