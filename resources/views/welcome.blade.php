@@ -468,13 +468,13 @@
                     <div class="md:col-span-8 lg:col-span-9 md:order-1">
                         <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
                             <p>
-                                I build mobile apps that people rely on daily. Five years in, my work spans eCommerce, education, and productivity — always with a focus on performance, clean architecture, and code the next engineer can maintain.
+                                Shipon Sarder is a Senior Mobile Application Developer with 5+ years of hands-on experience building native Android and cross-platform Flutter applications. He has led cross-functional engineering teams and brings strong technical depth in Clean Architecture, MVVM, MVP, and modern state management (BLoC, Riverpod, Provider).
                             </p>
                             <p>
-                                At Envobyte I lead a team of nine engineers building on Cloud Vision and ML Kit. Before that, I shipped MoveOn Global — a cross-border eCommerce app that reached 100K+ installs in three months. What I care about: mentorship, thorough code review, and CI/CD that catches issues before users do.
+                                His impact spans the full app lifecycle: architecting a cross-border eCommerce app, implementing CI/CD pipelines with automated Play Store and App Store deployment, and integrating real-time error monitoring via Sentry and Discord. He's also worked at the intersection of mobile and AI, applying Cloud Vision and ML Kit for image processing.
                             </p>
                             <p>
-                                Outside of work I stay sharp with competitive programming and I'm quietly interested in on-device ML for mobile.
+                                A mentor at heart, Shipon has driven team productivity through rigorous code reviews and documentation standards, while consistently delivering apps praised for performance and user experience. He holds a BSc in Computer Science and Engineering and is a certified Android Application Developer.
                             </p>
                         </div>
                     </div>
