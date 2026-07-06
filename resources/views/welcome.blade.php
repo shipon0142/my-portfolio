@@ -757,19 +757,17 @@
                     </div>
                 </div>
 
-                {{-- Right column: form or success block --}}
+                {{-- Right column: form (always visible) with optional success banner --}}
                 <div data-contact-panel>
                     @if(session('contact.success'))
-                        <div data-contact-success class="flex flex-col items-start gap-4 py-8">
-                            <div class="w-10 h-10 rounded-full bg-accent-faint flex items-center justify-center text-accent">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                            </div>
-                            <p class="text-[15px] md:text-[16px] text-ink-primary leading-[1.6]">
+                        <div data-contact-success class="mb-6 flex items-start gap-3 rounded-sm bg-accent-faint px-4 py-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                            <p class="text-[14px] text-ink-primary leading-[1.5]">
                                 Thanks — I'll get back to you within a day.
                             </p>
                         </div>
-                    @else
-                        <p class="label-mono">Send a message</p>
+                    @endif
+                    <p class="label-mono">Send a message</p>
                         <form data-contact-form action="{{ route('contact.send') }}" method="POST" class="mt-6 space-y-5" novalidate>
                             @csrf
 
@@ -840,7 +838,6 @@
                                 </p>
                             </div>
                         </form>
-                    @endif
                 </div>
             </div>
         </div>
@@ -986,13 +983,20 @@
         }
 
         function renderSuccess() {
-            panel.innerHTML =
-                '<div data-contact-success class="flex flex-col items-start gap-4 py-8">' +
-                    '<div class="w-10 h-10 rounded-full bg-accent-faint flex items-center justify-center text-accent">' +
-                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>' +
-                    '</div>' +
-                    '<p class="text-[15px] md:text-[16px] text-ink-primary leading-[1.6]">Thanks — I\'ll get back to you within a day.</p>' +
+            form.reset();
+            setSubmitting(false);
+            clearErrors();
+
+            var existing = panel.querySelector('[data-contact-success]');
+            if (existing) existing.remove();
+
+            var banner =
+                '<div data-contact-success class="mb-6 flex items-start gap-3 rounded-sm bg-accent-faint px-4 py-3">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>' +
+                    '<p class="text-[14px] text-ink-primary leading-[1.5]">Thanks — I\'ll get back to you within a day.</p>' +
                 '</div>';
+
+            panel.insertAdjacentHTML('afterbegin', banner);
         }
 
         form.addEventListener('submit', function (e) {
