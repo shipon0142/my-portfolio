@@ -509,12 +509,10 @@
             <div class="mt-14 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 max-w-3xl">
                 <div>
                     <p class="label-mono">Founder</p>
-                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="mt-1.5 inline-flex items-center gap-2 group" aria-label="RovexLabs — rovexlabs.com">
-                        <img src="/rovex-labs-mark.png?v=1" alt="" width="20" height="20" style="width:20px;height:20px;flex:none;display:inline-block;object-fit:contain;" aria-hidden="true">
-                        <span class="text-[15px] font-semibold tracking-tight text-ink-primary group-hover:opacity-90 transition-opacity">
-                            Rovex<span class="text-accent">Labs</span>
-                        </span>
-                    </a>
+                    <p class="mt-1.5 text-[13.5px] font-semibold tracking-tight text-ink-primary">
+                        Rovex<span class="text-accent">Labs</span>
+                    </p>
+                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
                 </div>
                 <div>
                     <p class="label-mono">Currently</p>
