@@ -307,6 +307,13 @@
     // Dummy personal projects — replace later
     $personal = [
         [
+            'name'    => 'PhotoNex AI',
+            'summary' => 'AI-powered photo tools for creators — enhance, edit, and generate imagery on the web.',
+            'tech'    => ['Next.js', 'TypeScript', 'AI'],
+            'status'  => 'Live',
+            'url'     => 'https://www.photonexai.com/',
+        ],
+        [
             'name'    => 'TaskFlow',
             'summary' => 'Local-first productivity app with offline sync and calendar integration.',
             'tech'    => ['Kotlin', 'Jetpack Compose', 'Room'],
@@ -599,11 +606,23 @@
                     <article class="card-surface flex flex-col p-5">
                         <div class="flex items-center justify-between">
                             <p class="label-mono">{{ $p['status'] }}</p>
-                            <span class="text-ink-muted" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-                            </span>
+                            @if (!empty($p['url']))
+                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent transition-colors" aria-label="Visit {{ $p['name'] }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                                </a>
+                            @else
+                                <span class="text-ink-muted" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                                </span>
+                            @endif
                         </div>
-                        <h3 class="mt-4 text-[16px] font-medium text-ink-primary tracking-tight">{{ $p['name'] }}</h3>
+                        @if (!empty($p['url']))
+                            <h3 class="mt-4 text-[16px] font-medium text-ink-primary tracking-tight">
+                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-accent transition-colors">{{ $p['name'] }}</a>
+                            </h3>
+                        @else
+                            <h3 class="mt-4 text-[16px] font-medium text-ink-primary tracking-tight">{{ $p['name'] }}</h3>
+                        @endif
                         <p class="mt-1.5 text-[13.5px] text-ink-secondary leading-relaxed">{{ $p['summary'] }}</p>
                         <div class="mt-auto pt-5 flex flex-wrap gap-x-2 gap-y-1">
                             @foreach ($p['tech'] as $j => $t)
