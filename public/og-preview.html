@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OG Preview — Shipon Sarder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html, body { margin: 0; padding: 0; background: #08080A; }
+        .card {
+            width: 1200px;
+            height: 630px;
+            background: #08080A;
+            color: #FFFFFF;
+            font-family: 'Geist', system-ui, sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 96px 0 64px;
+            box-sizing: border-box;
+        }
+        .stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0891B2;
+        }
+        .content { max-width: 780px; }
+        .name {
+            font-size: 96px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.0;
+            margin: 0;
+        }
+        .title {
+            margin-top: 28px;
+            font-size: 32px;
+            font-weight: 400;
+            color: #A1A1AA;
+        }
+        .stack {
+            margin-top: 20px;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 20px;
+            color: #0891B2;
+            letter-spacing: 0.02em;
+        }
+        .avatar {
+            width: 192px;
+            height: 192px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 1px rgba(8, 145, 178, 0.6);
+            flex-shrink: 0;
+        }
+        .footer {
+            position: absolute;
+            right: 40px;
+            bottom: 28px;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 16px;
+            color: #78716C;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="stripe"></div>
+        <div class="content">
+            <h1 class="name">Shipon Sarder</h1>
+            <p class="title">Senior Software Engineer</p>
+            <p class="stack">Android · Flutter · Mobile-first</p>
+        </div>
+        <img class="avatar" src="/avatar.jpg" alt="Shipon Sarder">
+        <p class="footer">shiponsarder.com</p>
+    </div>
+</body>
+</html>
