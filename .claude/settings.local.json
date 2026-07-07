@@ -1,0 +1,53 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php *)",
+      "Bash(curl -sS -o /tmp/portfolio_response.html -w \"HTTP %{http_code}\\\\n\" http://my-portfolio.test/)",
+      "Read(//tmp/**)",
+      "Bash(git add *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(git *)",
+      "Skill(update-config)",
+      "Bash(mysql *)",
+      "Bash(/c/laragon/bin/mysql/mysql-8.0.30-winx64/bin/mysql.exe *)",
+      "Bash(rm -rf app bootstrap config database lang node_modules public resources routes storage tests vendor)",
+      "Bash(rm -f .env .env.example .gitattributes .htaccess .gitignore artisan composer.json composer.lock favicon.ico index.php package.json package-lock.json phpunit.xml vite.config.js README.md)",
+      "Bash(cmd //c \"rmdir /s /q public vendor\")",
+      "Bash(cmd //c \"rmdir /q portfolio-static\")",
+      "Bash(powershell -Command \"Remove-Item -Path 'C:\\\\laragon\\\\www\\\\my-portfolio\\\\portfolio-static' -Force -Recurse\")",
+      "Bash(cmd //c \"rd portfolio-static\")",
+      "Bash(grep -v \"^total\\\\|^d.*\\\\.$\\\\|^d.*\\\\.\\\\.$\")",
+      "Bash(composer install *)",
+      "Bash(tasklist //FI \"IMAGENAME eq node.exe\")",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 29364)",
+      "Bash(grep *)",
+      "Bash(php artisan *)",
+      "Bash(curl -s -o /tmp/page.html -w \"HTTP:%{http_code} bytes:%{size_download}\\\\n\" http://127.0.0.1:8765/)",
+      "Bash(kill %1)",
+      "Bash(wait)",
+      "Bash(tail -3 php artisan serve --port=8765)",
+      "Bash(curl -s http://127.0.0.1:8765/ -o /tmp/page.html -w \"HTTP:%{http_code}\\\\n\" kill %1)",
+      "Bash(curl -s -o /dev/null -w \"root:%{http_code} avatar:\" http://127.0.0.1:8765/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} bytes:%{size_download}\\\\n\" http://127.0.0.1:8765/avatar.jpg)",
+      "WebFetch(domain:www.aashishjaini.me)",
+      "Bash(bash *)",
+      "WebFetch(domain:www.photonexai.com)",
+      "Bash(./vendor/bin/phpunit --filter=ContactFormTest)",
+      "Bash(./vendor/bin/phpunit --filter=test_discord_failure_returns_502_with_fallback_message -v)",
+      "Bash(./vendor/bin/phpunit --filter=test_discord_failure_returns_502_with_fallback_message --no-coverage)",
+      "Bash(curl -s http://127.0.0.1:8000/)",
+      "Bash(pkill -f \"artisan serve\")",
+      "Bash(curl *)",
+      "Bash(./vendor/bin/phpunit)",
+      "Bash(./vendor/bin/phpunit *)"
+    ],
+    "deny": [
+      "Bash(git commit *)",
+      "Bash(git commit)",
+      "Bash(git push *)",
+      "Bash(git push)"
+    ]
+  }
+}
