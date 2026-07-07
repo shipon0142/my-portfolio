@@ -5,6 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Shipon Sarder — Software Engineer building mobile-first products that scale. 100K+ installs, 5+ years shipping Android and Flutter.">
+    <link rel="canonical" href="https://shiponsarder.com/">
+    <meta name="author" content="Shipon Sarder">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0891B2">
+    <meta name="keywords" content="Shipon Sarder, Android developer, Flutter developer, mobile engineer, senior software engineer, Dhaka, Bangladesh, Envobyte">
+
+    {{-- Open Graph --}}
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Shipon Sarder">
+    <meta property="og:title" content="Shipon Sarder — Senior Software Engineer">
+    <meta property="og:description" content="Senior mobile engineer shipping Android & Flutter apps used by 100K+ people. Based in Dhaka, open to remote roles.">
+    <meta property="og:url" content="https://shiponsarder.com/">
+    <meta property="og:image" content="https://shiponsarder.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Shipon Sarder — Senior Software Engineer, Android & Flutter">
+    <meta property="profile:first_name" content="Shipon">
+    <meta property="profile:last_name" content="Sarder">
+
+    {{-- Twitter/X card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shipon Sarder — Senior Software Engineer">
+    <meta name="twitter:description" content="Senior mobile engineer shipping Android & Flutter apps used by 100K+ people. Based in Dhaka, open to remote roles.">
+    <meta name="twitter:image" content="https://shiponsarder.com/og-image.png">
+    <meta name="twitter:image:alt" content="Shipon Sarder — Senior Software Engineer, Android & Flutter">
+
+    {{-- Structured data: Person --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://shiponsarder.com/#person",
+        "name": "Shipon Sarder",
+        "givenName": "Shipon",
+        "familyName": "Sarder",
+        "url": "https://shiponsarder.com/",
+        "image": "https://shiponsarder.com/avatar.jpg",
+        "jobTitle": "Senior Software Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Envobyte"
+        },
+        "email": "mailto:shipon0142@gmail.com",
+        "telephone": "+8801925727000",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dhaka",
+            "addressCountry": "BD"
+        },
+        "knowsAbout": ["Android", "Flutter", "Kotlin", "Dart", "Mobile app development"],
+        "sameAs": [
+            "https://github.com/shipon0142",
+            "https://linkedin.com/in/shipon-sarder-900727102"
+        ]
+    }
+    </script>
+
+    {{-- Structured data: WebSite --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://shiponsarder.com/#website",
+        "url": "https://shiponsarder.com/",
+        "name": "Shipon Sarder",
+        "description": "Portfolio of Shipon Sarder, Senior Software Engineer.",
+        "inLanguage": "en",
+        "author": { "@id": "https://shiponsarder.com/#person" }
+    }
+    </script>
     <title>Shipon Sarder — Software Engineer</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
