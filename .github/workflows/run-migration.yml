@@ -9,6 +9,13 @@ on:
         type: choice
         options:
           - production
+      branch:
+        description: 'Select branch'
+        required: true
+        type: choice
+        options:
+          - prod
+          - master
       confirm_password:
         description: 'Enter confirmation password to proceed with migration'
         required: true
