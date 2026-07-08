@@ -56,7 +56,7 @@ jobs:
             cd "${{ secrets.CPANEL_APP_PATH }}"
 
             PHP_BIN="${{ secrets.CPANEL_PHP_BIN }}"
-            MIGRATION="2026_07_02_000001_add_onesignal_ids_to_app_users_table"
+            MIGRATION="2026_07_08_000001_create_test_table"
 
             echo "Checking migration: $MIGRATION"
 
