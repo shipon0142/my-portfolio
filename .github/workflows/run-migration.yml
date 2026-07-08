@@ -1,0 +1,65 @@
+name: Run Specific Migration (cPanel)
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select target environment'
+        required: true
+        type: choice
+        options:
+          - production
+      confirm_password:
+        description: 'Enter confirmation password to proceed with migration'
+        required: true
+        type: string
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # =========================
+      # PASSWORD CHECK
+      # =========================
+      - name: Validate password
+        run: |
+          if [ "${{ github.event.inputs.confirm_password }}" != "${{ secrets.MIGRATION_CONFIRM_PASSWORD }}" ]; then
+            echo "Wrong password. Migration aborted."
+            exit 1
+          fi
+          echo "Password verified"
+
+      # =========================
+      # PRODUCTION (cPanel shared hosting)
+      #
+      # Edit MIGRATION below for each new migration you need to run.
+      # Format: filename WITHOUT the .php extension.
+      # =========================
+      - name: Run migration on Production
+        if: github.event.inputs.environment == 'production'
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.CPANEL_SSH_HOST }}
+          port: ${{ secrets.CPANEL_SSH_PORT }}
+          username: ${{ secrets.CPANEL_SSH_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          script: |
+            set -e
+            cd "${{ secrets.CPANEL_APP_PATH }}"
+
+            PHP_BIN="${{ secrets.CPANEL_PHP_BIN }}"
+            MIGRATION="2026_07_02_000001_add_onesignal_ids_to_app_users_table"
+
+            echo "Checking migration: $MIGRATION"
+
+            STATUS=$("$PHP_BIN" artisan migrate:status --no-interaction 2>/dev/null | grep "$MIGRATION" || true)
+
+            if echo "$STATUS" | grep -q "Yes"; then
+              echo "Already executed. Skipping."
+            else
+              "$PHP_BIN" artisan migrate --force --path=database/migrations/${MIGRATION}.php
+              echo "Migration completed (PRODUCTION)"
+            fi
+
+            echo "Production migration finished"
