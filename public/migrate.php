@@ -164,19 +164,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $flash = ['type' => 'error', 'msg' => 'Seeder file not found: ' . $name];
             } else {
                 try {
-                    Log::info('Migration UI: running seeder', ['seeder' => $name]);
-                    Artisan::call('db:seed', [
-                        '--class' => $name,
-                        '--force' => true,
-                    ]);
-                    Log::info('Migration UI: seeder success', ['seeder' => $name]);
-                    $flash = ['type' => 'success', 'msg' => 'Seeder executed: ' . $name];
+                    if (!Schema::hasTable('seeder_runs')) {
+                        Schema::create('seeder_runs', function ($t) {
+                            $t->id();
+                            $t->string('seeder')->unique();
+                            $t->timestamp('ran_at')->useCurrent();
+                        });
+                    }
+                    $alreadyRun = DB::table('seeder_runs')->where('seeder', $name)->exists();
                 } catch (\Throwable $e) {
-                    Log::error('Migration UI: seeder command threw', [
-                        'seeder' => $name,
-                        'exception' => $e->getMessage(),
-                    ]);
-                    $flash = ['type' => 'error', 'msg' => 'Seeder failed. Check server logs.'];
+                    Log::error('Migration UI: seeder DB check failed', ['exception' => $e->getMessage()]);
+                    $alreadyRun = null;
+                    $flash = ['type' => 'error', 'msg' => 'Database unreachable. Check server logs.'];
+                }
+                if ($alreadyRun === true) {
+                    $flash = ['type' => 'info', 'msg' => 'Already executed: ' . $name];
+                } elseif ($alreadyRun === false) {
+                    try {
+                        Log::info('Migration UI: running seeder', ['seeder' => $name]);
+                        Artisan::call('db:seed', [
+                            '--class' => $name,
+                            '--force' => true,
+                        ]);
+                        DB::table('seeder_runs')->insert([
+                            'seeder' => $name,
+                            'ran_at' => date('Y-m-d H:i:s'),
+                        ]);
+                        Log::info('Migration UI: seeder success', ['seeder' => $name]);
+                        $flash = ['type' => 'success', 'msg' => 'Seeder executed: ' . $name];
+                    } catch (\Throwable $e) {
+                        Log::error('Migration UI: seeder command threw', [
+                            'seeder' => $name,
+                            'exception' => $e->getMessage(),
+                        ]);
+                        $flash = ['type' => 'error', 'msg' => 'Seeder failed. Check server logs.'];
+                    }
                 }
             }
         }
@@ -216,13 +238,31 @@ $pendingCount = count(array_filter($migrations, fn($m) => $m['applied'] === fals
 $unknownCount = count(array_filter($migrations, fn($m) => $m['applied'] === null));
 
 $seeders = [];
+$seederStatusAvailable = false;
 if ($isAuthenticated) {
     $files = glob($seedersDir . DIRECTORY_SEPARATOR . '*.php') ?: [];
     foreach ($files as $file) {
-        $seeders[] = basename($file, '.php');
+        $seeders[] = ['name' => basename($file, '.php'), 'applied' => null];
     }
-    sort($seeders);
+    usort($seeders, fn($a, $b) => strcmp($a['name'], $b['name']));
+
+    try {
+        $seederApplied = Schema::hasTable('seeder_runs')
+            ? DB::table('seeder_runs')->pluck('seeder')->all()
+            : [];
+        $seederAppliedSet = array_flip($seederApplied);
+        foreach ($seeders as &$s) {
+            $s['applied'] = isset($seederAppliedSet[$s['name']]);
+        }
+        unset($s);
+        $seederStatusAvailable = true;
+    } catch (\Throwable $e) {
+        Log::error('Migration UI: failed to load seeder status', ['exception' => $e->getMessage()]);
+    }
 }
+
+$seederAppliedCount = count(array_filter($seeders, fn($s) => $s['applied'] === true));
+$seederPendingCount = count(array_filter($seeders, fn($s) => $s['applied'] === false));
 
 $flashClasses = [
     'success' => 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300',
@@ -366,7 +406,11 @@ $flashClasses = [
                 <div class="px-6 py-4 border-b border-neutral-800">
                     <div class="text-sm text-neutral-200 font-medium">Seeders</div>
                     <div class="text-xs text-neutral-500 mt-0.5">
-                        <?= count($seeders) ?> file<?= count($seeders) === 1 ? '' : 's' ?> · seeders can be re-run
+                        <?php if ($seederStatusAvailable): ?>
+                            <?= $seederAppliedCount ?> applied · <?= $seederPendingCount ?> pending
+                        <?php else: ?>
+                            <?= count($seeders) ?> file<?= count($seeders) === 1 ? '' : 's' ?> · status unknown
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -380,6 +424,7 @@ $flashClasses = [
                             <thead class="bg-neutral-950/50">
                                 <tr class="text-left text-[11px] text-neutral-500 uppercase tracking-wider">
                                     <th class="px-6 py-3 font-medium">Seeder</th>
+                                    <th class="px-6 py-3 font-medium">Status</th>
                                     <th class="px-6 py-3 font-medium text-right">Action</th>
                                 </tr>
                             </thead>
@@ -387,18 +432,40 @@ $flashClasses = [
                                 <?php foreach ($seeders as $s): ?>
                                     <tr class="hover:bg-neutral-800/30 transition">
                                         <td class="px-6 py-3 font-mono text-xs text-neutral-300 break-all">
-                                            <?= htmlspecialchars($s) ?>
+                                            <?= htmlspecialchars($s['name']) ?>
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            <?php if ($s['applied'] === true): ?>
+                                                <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                                    Applied
+                                                </span>
+                                            <?php elseif ($s['applied'] === false): ?>
+                                                <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                                    Pending
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-neutral-500/10 text-neutral-400 border border-neutral-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                                                    Unknown
+                                                </span>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="px-6 py-3 text-right">
-                                            <form method="POST" class="inline"
-                                                  onsubmit="return confirm('Run seeder: <?= htmlspecialchars($s, ENT_QUOTES) ?>? Seeders may insert or update data.');">
-                                                <input type="hidden" name="action" value="run_seeder">
-                                                <input type="hidden" name="seeder_name" value="<?= htmlspecialchars($s) ?>">
-                                                <button type="submit"
-                                                        class="text-xs bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-medium px-3 py-1.5 rounded-md transition">
-                                                    Run
-                                                </button>
-                                            </form>
+                                            <?php if ($s['applied'] !== true): ?>
+                                                <form method="POST" class="inline"
+                                                      onsubmit="return confirm('Run seeder: <?= htmlspecialchars($s['name'], ENT_QUOTES) ?>?');">
+                                                    <input type="hidden" name="action" value="run_seeder">
+                                                    <input type="hidden" name="seeder_name" value="<?= htmlspecialchars($s['name']) ?>">
+                                                    <button type="submit"
+                                                            class="text-xs bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-medium px-3 py-1.5 rounded-md transition">
+                                                        Run
+                                                    </button>
+                                                </form>
+                                            <?php else: ?>
+                                                <span class="text-xs text-neutral-600">—</span>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
