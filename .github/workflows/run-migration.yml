@@ -16,6 +16,10 @@ on:
         options:
           - prod
           - master
+      migration_name:
+        description: 'Migration filename WITHOUT the .php extension (e.g. 2026_07_08_000001_create_test_table)'
+        required: true
+        type: string
       confirm_password:
         description: 'Enter confirmation password to proceed with migration'
         required: true
@@ -38,36 +42,31 @@ jobs:
           echo "Password verified"
 
       # =========================
-      # PRODUCTION (cPanel shared hosting)
+      # PRODUCTION (cPanel shared hosting via HTTP endpoint)
       #
-      # Edit MIGRATION below for each new migration you need to run.
-      # Format: filename WITHOUT the .php extension.
+      # Calls the token-protected Laravel endpoint at
+      # POST https://shiponsarder.com/api/system/migrate
       # =========================
-      - name: Run migration on Production
+      - name: Run migration via HTTP endpoint
         if: github.event.inputs.environment == 'production'
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.CPANEL_SSH_HOST }}
-          port: ${{ secrets.CPANEL_SSH_PORT }}
-          username: ${{ secrets.CPANEL_SSH_USER }}
-          passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          script: |
-            set -e
-            cd "${{ secrets.CPANEL_APP_PATH }}"
-
-            PHP_BIN="${{ secrets.CPANEL_PHP_BIN }}"
-            MIGRATION="2026_07_08_000001_create_test_table"
-
-            echo "Checking migration: $MIGRATION"
-
-            STATUS=$("$PHP_BIN" artisan migrate:status --no-interaction 2>/dev/null | grep "$MIGRATION" || true)
-
-            if echo "$STATUS" | grep -q "Yes"; then
-              echo "Already executed. Skipping."
-            else
-              "$PHP_BIN" artisan migrate --force --path=database/migrations/${MIGRATION}.php
-              echo "Migration completed (PRODUCTION)"
-            fi
-
-            echo "Production migration finished"
+        env:
+          ENDPOINT: https://shiponsarder.com/api/system/migrate
+          TOKEN: ${{ secrets.MIGRATION_ENDPOINT_TOKEN }}
+          MIGRATION_NAME: ${{ github.event.inputs.migration_name }}
+        run: |
+          set -e
+          echo "Requesting migration: $MIGRATION_NAME"
+          RESPONSE=$(curl -sS -w "\n%{http_code}" -X POST "$ENDPOINT" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -d "{\"migration_name\":\"$MIGRATION_NAME\"}")
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "HTTP $HTTP_CODE"
+          echo "$BODY"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "Migration request failed with HTTP $HTTP_CODE"
+            exit 1
+          fi
+          echo "Migration request completed"
