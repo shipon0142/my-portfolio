@@ -202,6 +202,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
         }
+    } elseif ($action === 'composer_install' && $isAuthenticated) {
+        if (!function_exists('shell_exec')) {
+            $flash = [
+                'type' => 'error',
+                'msg'  => 'shell_exec() is disabled on this server. SSH into the box and run: cd ' . base_path() . ' && composer install --no-dev --optimize-autoloader',
+            ];
+        } else {
+            @set_time_limit(300);
+            @ini_set('memory_limit', '512M');
+
+            $projectRoot = base_path();
+            $composerCandidates = [
+                'composer',
+                '/usr/local/bin/composer',
+                '/usr/bin/composer',
+                'php ' . escapeshellarg($projectRoot . '/composer.phar'),
+            ];
+
+            $output   = null;
+            $usedCmd  = null;
+            foreach ($composerCandidates as $bin) {
+                if (str_starts_with($bin, 'php ') && !is_file($projectRoot . '/composer.phar')) {
+                    continue;
+                }
+                $cmd = 'cd ' . escapeshellarg($projectRoot) . ' && ' . $bin
+                     . ' install --no-dev --optimize-autoloader --no-interaction 2>&1';
+                $result = @shell_exec($cmd);
+                if ($result !== null && !str_contains(strtolower($result), 'not found') && !str_contains($result, 'command not found')) {
+                    $output  = $result;
+                    $usedCmd = $bin;
+                    break;
+                }
+            }
+
+            if ($output === null) {
+                $flash = [
+                    'type' => 'error',
+                    'msg'  => 'Could not locate composer. SSH in and run: cd ' . $projectRoot . ' && composer install --no-dev --optimize-autoloader',
+                ];
+            } else {
+                Log::info('Migration UI: composer install', ['bin' => $usedCmd]);
+                $flash = [
+                    'type' => 'success',
+                    'msg'  => "Composer ({$usedCmd}) output:\n\n" . $output,
+                ];
+            }
+        }
     }
 }
 
@@ -299,7 +346,7 @@ $flashClasses = [
         </div>
 
         <?php if ($flash): ?>
-            <div class="mb-6 border rounded-lg px-4 py-3 text-sm <?= $flashClasses[$flash['type']] ?? '' ?>">
+            <div class="mb-6 border rounded-lg px-4 py-3 text-sm whitespace-pre-wrap font-mono <?= $flashClasses[$flash['type']] ?? '' ?>">
                 <?= htmlspecialchars((string) $flash['msg']) ?>
             </div>
         <?php endif; ?>
@@ -316,6 +363,23 @@ $flashClasses = [
                 </button>
             </form>
         <?php else: ?>
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden mb-6">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <div class="text-sm text-neutral-200 font-medium">Composer</div>
+                        <div class="text-xs text-neutral-500 mt-0.5">Reinstall packages when <span class="font-mono">composer.json</span> changes.</div>
+                    </div>
+                    <form method="POST"
+                          onsubmit="return confirm('Run composer install? This may take up to a few minutes.');">
+                        <input type="hidden" name="action" value="composer_install">
+                        <button type="submit"
+                                class="text-xs bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-medium px-3 py-1.5 rounded-md transition">
+                            Run composer install
+                        </button>
+                    </form>
+                </div>
+            </div>
+
             <div class="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden">
                 <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
                     <div>
