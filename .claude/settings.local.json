@@ -47,7 +47,9 @@
       "Bash(tasklist)",
       "Bash(where php *)",
       "Bash(composer require *)",
-      "Bash(echo \"EXIT:$?\")"
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(composer --version)",
+      "Bash(node *)"
     ],
     "deny": [
       "Bash(git commit *)",

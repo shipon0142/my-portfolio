@@ -14,6 +14,32 @@
                 class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 font-mono text-sm outline-none">{{ old('html_content', $page->html_content) }}</textarea>
             @error('html_content') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
         </div>
+
+        @php
+            $hasAnyBn = filled(old('title_bn', $page->title_bn))
+                     || filled(old('html_content_bn', $page->html_content_bn))
+                     || filled(old('meta_title_bn', $page->meta_title_bn))
+                     || filled(old('meta_description_bn', $page->meta_description_bn));
+        @endphp
+
+        <details class="border border-zinc-800 rounded-lg" @if($hasAnyBn) open @endif>
+            <summary class="cursor-pointer px-3 py-2 text-zinc-300">Bangla (optional)</summary>
+            <div class="p-3 space-y-4 border-t border-zinc-800">
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-1">Title (বাংলা)</label>
+                    <input name="title_bn" value="{{ old('title_bn', $page->title_bn) }}"
+                        class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">
+                    @error('title_bn') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-1">HTML content (বাংলা)</label>
+                    <textarea id="html_content_bn" name="html_content_bn" rows="20"
+                        class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 font-mono text-sm outline-none">{{ old('html_content_bn', $page->html_content_bn) }}</textarea>
+                    @error('html_content_bn') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
+                </div>
+            </div>
+        </details>
     </div>
 
     <aside class="space-y-4">
@@ -53,6 +79,20 @@
             <label class="block text-sm text-zinc-400 mb-1">Meta description</label>
             <textarea name="meta_description" rows="3"
                 class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">{{ old('meta_description', $page->meta_description) }}</textarea>
+        </div>
+
+        <div>
+            <label class="block text-sm text-zinc-400 mb-1">Meta title (বাংলা)</label>
+            <input name="meta_title_bn" value="{{ old('meta_title_bn', $page->meta_title_bn) }}"
+                class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">
+            @error('meta_title_bn') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
+        </div>
+
+        <div>
+            <label class="block text-sm text-zinc-400 mb-1">Meta description (বাংলা)</label>
+            <textarea name="meta_description_bn" rows="3"
+                class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">{{ old('meta_description_bn', $page->meta_description_bn) }}</textarea>
+            @error('meta_description_bn') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
         </div>
 
         <div class="pt-2">

@@ -29,7 +29,7 @@ class StudyController extends Controller
         return view('study.topic', compact('topic', 'pages'));
     }
 
-    public function page(Topic $topic, Page $page)
+    public function page(Topic $topic, Page $page, \Illuminate\Http\Request $request)
     {
         if ($page->topic_id !== $topic->id) {
             abort(404);
@@ -38,6 +38,8 @@ class StudyController extends Controller
             abort(404);
         }
 
-        return view('study.page', compact('topic', 'page'));
+        $locale = $request->query('lang') === 'bn' && $page->hasBangla() ? 'bn' : 'en';
+
+        return view('study.page', compact('topic', 'page', 'locale'));
     }
 }

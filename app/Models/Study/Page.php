@@ -17,6 +17,7 @@ class Page extends Model
         'topic_id', 'title', 'slug', 'template',
         'html_content', 'meta_title', 'meta_description',
         'status', 'published_at',
+        'title_bn', 'html_content_bn', 'meta_title_bn', 'meta_description_bn',
     ];
 
     protected $casts = [
@@ -34,6 +35,11 @@ class Page extends Model
         return $q->where('status', 'published')
                  ->whereNotNull('published_at')
                  ->where('published_at', '<=', now());
+    }
+
+    public function hasBangla(): bool
+    {
+        return filled($this->html_content_bn);
     }
 
     public function getRouteKeyName(): string

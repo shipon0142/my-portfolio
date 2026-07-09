@@ -128,4 +128,33 @@ class PageCrudTest extends TestCase
 
         $this->assertDatabaseMissing('study_pages', ['id' => $page->id]);
     }
+
+    public function test_can_create_page_with_bangla_fields(): void
+    {
+        $topic = Topic::factory()->create();
+
+        $this->actingAs($this->admin())
+            ->post(route('admin.study.topics.pages.store', $topic), [
+                'title'               => 'English Title',
+                'slug'                => 'en-slug',
+                'template'            => 'article',
+                'html_content'        => '<p>English body</p>',
+                'status'              => 'draft',
+                'title_bn'            => 'বাংলা শিরোনাম',
+                'html_content_bn'     => '<p>বাংলা লেখা</p>',
+                'meta_title_bn'       => 'বাংলা মেটা',
+                'meta_description_bn' => 'বাংলা বিবরণ',
+            ])
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('study_pages', [
+            'slug'          => 'en-slug',
+            'title_bn'      => 'বাংলা শিরোনাম',
+            'meta_title_bn' => 'বাংলা মেটা',
+        ]);
+
+        $page = Page::firstWhere('slug', 'en-slug');
+        $this->assertNotNull($page);
+        $this->assertStringContainsString('বাংলা লেখা', $page->html_content_bn);
+    }
 }
