@@ -43,7 +43,8 @@
       "Bash(./vendor/bin/phpunit)",
       "Bash(./vendor/bin/phpunit *)",
       "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('/c/laragon/www/my-portfolio/.github/workflows/run-migration.yml'\\)\\)\")",
-      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/c/laragon/www/my-portfolio/.github/workflows/run-migration.yml'\\)\\)\")"
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/c/laragon/www/my-portfolio/.github/workflows/run-migration.yml'\\)\\)\")",
+      "Bash(tasklist)"
     ],
     "deny": [
       "Bash(git commit *)",

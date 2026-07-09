@@ -16,6 +16,7 @@ $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 $expectedToken  = config('migration.token');
 $migrationsDir  = realpath(__DIR__ . '/../database/migrations') ?: (__DIR__ . '/../database/migrations');
@@ -124,7 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $flash = ['type' => 'error', 'msg' => 'Migration file not found: ' . $name];
             } else {
                 try {
-                    $alreadyApplied = DB::table('migrations')->where('migration', $name)->exists();
+                    $alreadyApplied = Schema::hasTable('migrations')
+                        && DB::table('migrations')->where('migration', $name)->exists();
                 } catch (\Throwable $e) {
                     Log::error('Migration UI: DB check failed', ['exception' => $e->getMessage()]);
                     $alreadyApplied = null;
@@ -155,27 +157,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $migrations = [];
+$dbStatusAvailable = false;
 if ($isAuthenticated) {
+    $files = glob($migrationsDir . DIRECTORY_SEPARATOR . '*.php') ?: [];
+    foreach ($files as $file) {
+        $migrations[] = [
+            'name'    => basename($file, '.php'),
+            'applied' => null,
+        ];
+    }
+    usort($migrations, fn($a, $b) => strcmp($a['name'], $b['name']));
+
     try {
-        $files = glob($migrationsDir . DIRECTORY_SEPARATOR . '*.php') ?: [];
-        $applied = DB::table('migrations')->pluck('migration')->all();
+        $applied = Schema::hasTable('migrations')
+            ? DB::table('migrations')->pluck('migration')->all()
+            : [];
         $appliedSet = array_flip($applied);
-        foreach ($files as $file) {
-            $mname = basename($file, '.php');
-            $migrations[] = [
-                'name'    => $mname,
-                'applied' => isset($appliedSet[$mname]),
-            ];
+        foreach ($migrations as &$m) {
+            $m['applied'] = isset($appliedSet[$m['name']]);
         }
-        usort($migrations, fn($a, $b) => strcmp($a['name'], $b['name']));
+        unset($m);
+        $dbStatusAvailable = true;
     } catch (\Throwable $e) {
-        Log::error('Migration UI: failed to load migration list', ['exception' => $e->getMessage()]);
-        $dbError = 'Could not read migration status from database.';
+        Log::error('Migration UI: failed to load applied status', ['exception' => $e->getMessage()]);
+        $dbError = 'Could not read applied status from database. Files are listed below, but Applied/Pending is unknown.';
     }
 }
 
-$appliedCount = count(array_filter($migrations, fn($m) => $m['applied']));
-$pendingCount = count($migrations) - $appliedCount;
+$appliedCount = count(array_filter($migrations, fn($m) => $m['applied'] === true));
+$pendingCount = count(array_filter($migrations, fn($m) => $m['applied'] === false));
+$unknownCount = count(array_filter($migrations, fn($m) => $m['applied'] === null));
 
 $flashClasses = [
     'success' => 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300',
@@ -234,7 +245,11 @@ $flashClasses = [
                     <div>
                         <div class="text-sm text-neutral-200 font-medium">Migrations</div>
                         <div class="text-xs text-neutral-500 mt-0.5">
-                            <?= $appliedCount ?> applied · <?= $pendingCount ?> pending
+                            <?php if ($dbStatusAvailable): ?>
+                                <?= $appliedCount ?> applied · <?= $pendingCount ?> pending
+                            <?php else: ?>
+                                <?= $unknownCount ?> file<?= $unknownCount === 1 ? '' : 's' ?> · status unknown
+                            <?php endif; ?>
                         </div>
                     </div>
                     <form method="POST">
@@ -246,10 +261,11 @@ $flashClasses = [
                 </div>
 
                 <?php if ($dbError): ?>
-                    <div class="px-6 py-8 text-center text-sm text-red-300">
+                    <div class="px-6 py-3 text-xs text-amber-300 bg-amber-500/5 border-b border-amber-500/20">
                         <?= htmlspecialchars($dbError) ?>
                     </div>
-                <?php elseif (empty($migrations)): ?>
+                <?php endif; ?>
+                <?php if (empty($migrations)): ?>
                     <div class="px-6 py-8 text-center text-sm text-neutral-500">
                         No migration files found in <span class="font-mono">database/migrations</span>.
                     </div>
@@ -270,20 +286,25 @@ $flashClasses = [
                                             <?= htmlspecialchars($m['name']) ?>
                                         </td>
                                         <td class="px-6 py-3">
-                                            <?php if ($m['applied']): ?>
+                                            <?php if ($m['applied'] === true): ?>
                                                 <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                                                     Applied
                                                 </span>
-                                            <?php else: ?>
+                                            <?php elseif ($m['applied'] === false): ?>
                                                 <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
                                                     Pending
                                                 </span>
+                                            <?php else: ?>
+                                                <span class="inline-flex items-center gap-1.5 text-[11px] px-2 py-0.5 rounded-full bg-neutral-500/10 text-neutral-400 border border-neutral-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                                                    Unknown
+                                                </span>
                                             <?php endif; ?>
                                         </td>
                                         <td class="px-6 py-3 text-right">
-                                            <?php if (!$m['applied']): ?>
+                                            <?php if ($m['applied'] !== true): ?>
                                                 <form method="POST" class="inline"
                                                       onsubmit="return confirm('Run migration: <?= htmlspecialchars($m['name'], ENT_QUOTES) ?>?');">
                                                     <input type="hidden" name="action" value="run">
