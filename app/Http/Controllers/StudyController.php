@@ -31,11 +31,23 @@ class StudyController extends Controller
 
     public function page(Topic $topic, Page $page)
     {
+        \Log::info('study.page hit', [
+            'topic_id'          => $topic->id,
+            'topic_slug'        => $topic->slug,
+            'page_id'           => $page->id,
+            'page_slug'         => $page->slug,
+            'page_topic_id'     => $page->topic_id,
+            'page_status'       => $page->status,
+            'page_published_at' => (string) $page->published_at,
+            'now'               => (string) now(),
+            'is_future'         => $page->published_at?->isFuture(),
+        ]);
+
         if ($page->topic_id !== $topic->id) {
-            abort(404);
+            abort(404, 'topic mismatch');
         }
         if ($page->status !== 'published' || $page->published_at === null || $page->published_at->isFuture()) {
-            abort(404);
+            abort(404, 'not published or future');
         }
 
         return view('study.page', compact('topic', 'page'));
