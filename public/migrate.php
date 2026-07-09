@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Schema;
 
 $expectedToken  = config('migration.token');
 $migrationsDir  = realpath(__DIR__ . '/../database/migrations') ?: (__DIR__ . '/../database/migrations');
+$seedersDir     = realpath(__DIR__ . '/../database/seeders')    ?: (__DIR__ . '/../database/seeders');
 $throttleFile   = __DIR__ . '/../storage/framework/cache/mig-throttle.json';
 $cookieName     = 'mig_auth';
 $cookiePath     = '/migrate.php';
@@ -153,6 +154,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
         }
+    } elseif ($action === 'run_seeder' && $isAuthenticated) {
+        $name = (string) ($_POST['seeder_name'] ?? '');
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $name)) {
+            $flash = ['type' => 'error', 'msg' => 'Invalid seeder name.'];
+        } else {
+            $filePath = $seedersDir . DIRECTORY_SEPARATOR . $name . '.php';
+            if (!is_file($filePath)) {
+                $flash = ['type' => 'error', 'msg' => 'Seeder file not found: ' . $name];
+            } else {
+                try {
+                    Log::info('Migration UI: running seeder', ['seeder' => $name]);
+                    Artisan::call('db:seed', [
+                        '--class' => $name,
+                        '--force' => true,
+                    ]);
+                    Log::info('Migration UI: seeder success', ['seeder' => $name]);
+                    $flash = ['type' => 'success', 'msg' => 'Seeder executed: ' . $name];
+                } catch (\Throwable $e) {
+                    Log::error('Migration UI: seeder command threw', [
+                        'seeder' => $name,
+                        'exception' => $e->getMessage(),
+                    ]);
+                    $flash = ['type' => 'error', 'msg' => 'Seeder failed. Check server logs.'];
+                }
+            }
+        }
     }
 }
 
@@ -187,6 +214,15 @@ if ($isAuthenticated) {
 $appliedCount = count(array_filter($migrations, fn($m) => $m['applied'] === true));
 $pendingCount = count(array_filter($migrations, fn($m) => $m['applied'] === false));
 $unknownCount = count(array_filter($migrations, fn($m) => $m['applied'] === null));
+
+$seeders = [];
+if ($isAuthenticated) {
+    $files = glob($seedersDir . DIRECTORY_SEPARATOR . '*.php') ?: [];
+    foreach ($files as $file) {
+        $seeders[] = basename($file, '.php');
+    }
+    sort($seeders);
+}
 
 $flashClasses = [
     'success' => 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300',
@@ -317,6 +353,52 @@ $flashClasses = [
                                             <?php else: ?>
                                                 <span class="text-xs text-neutral-600">—</span>
                                             <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden mt-6">
+                <div class="px-6 py-4 border-b border-neutral-800">
+                    <div class="text-sm text-neutral-200 font-medium">Seeders</div>
+                    <div class="text-xs text-neutral-500 mt-0.5">
+                        <?= count($seeders) ?> file<?= count($seeders) === 1 ? '' : 's' ?> · seeders can be re-run
+                    </div>
+                </div>
+
+                <?php if (empty($seeders)): ?>
+                    <div class="px-6 py-8 text-center text-sm text-neutral-500">
+                        No seeder files found in <span class="font-mono">database/seeders</span>.
+                    </div>
+                <?php else: ?>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-neutral-950/50">
+                                <tr class="text-left text-[11px] text-neutral-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 font-medium">Seeder</th>
+                                    <th class="px-6 py-3 font-medium text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-800">
+                                <?php foreach ($seeders as $s): ?>
+                                    <tr class="hover:bg-neutral-800/30 transition">
+                                        <td class="px-6 py-3 font-mono text-xs text-neutral-300 break-all">
+                                            <?= htmlspecialchars($s) ?>
+                                        </td>
+                                        <td class="px-6 py-3 text-right">
+                                            <form method="POST" class="inline"
+                                                  onsubmit="return confirm('Run seeder: <?= htmlspecialchars($s, ENT_QUOTES) ?>? Seeders may insert or update data.');">
+                                                <input type="hidden" name="action" value="run_seeder">
+                                                <input type="hidden" name="seeder_name" value="<?= htmlspecialchars($s) ?>">
+                                                <button type="submit"
+                                                        class="text-xs bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-medium px-3 py-1.5 rounded-md transition">
+                                                    Run
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
