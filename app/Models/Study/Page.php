@@ -19,7 +19,10 @@ class Page extends Model
         'status', 'published_at',
     ];
 
-    protected $casts = ['published_at' => 'datetime'];
+    protected $casts = [
+        'topic_id'     => 'int',
+        'published_at' => 'datetime',
+    ];
 
     public function topic(): BelongsTo
     {
