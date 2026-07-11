@@ -39,6 +39,19 @@
     $body  = $locale === 'bn' ? $page->html_content_bn : $page->html_content;
 @endphp
 
+@auth
+    @if (auth()->user()->is_admin ?? false)
+        <a href="{{ route('admin.study.topics.pages.edit', [$topic, $page]) }}" target="_blank" rel="noopener"
+           class="fixed top-4 right-4 z-50 inline-flex items-center gap-1.5 bg-cyan-500 hover:bg-cyan-400 text-zinc-950 text-xs font-medium rounded-lg px-3 py-1.5 shadow-lg"
+           title="Edit this page">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                <path d="M17.414 2.586a2 2 0 010 2.828l-9.9 9.9a2 2 0 01-.878.506l-3.535.884.884-3.535a2 2 0 01.506-.878l9.9-9.9a2 2 0 012.828 0z"/>
+            </svg>
+            Edit
+        </a>
+    @endif
+@endauth
+
 <main class="px-6 py-16">
     <div class="max-w-3xl mx-auto mb-8 flex items-center justify-between">
         <a href="{{ route('study.topic', $topic) }}" class="text-zinc-500 hover:text-cyan-400 text-sm">
