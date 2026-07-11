@@ -37,7 +37,31 @@
     // so admins who translate only the body don't render a blank heading.
     $title = $locale === 'bn' ? ($page->title_bn ?? $page->title) : $page->title;
     $body  = $locale === 'bn' ? $page->html_content_bn : $page->html_content;
+    $langQBar = $locale === 'bn' ? '?lang=bn' : '';
 @endphp
+
+@if ($siblings->count() > 1)
+    <div class="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 py-2 flex items-center gap-3">
+            <span class="text-xs text-zinc-500 font-mono shrink-0">
+                {{ $currentIndex + 1 }}/{{ $siblings->count() }}
+            </span>
+            <div class="flex-1 flex gap-1">
+                @foreach ($siblings as $i => $sib)
+                    @if ($i === $currentIndex)
+                        <span aria-current="page"
+                              class="flex-1 h-1.5 rounded-full bg-cyan-400"
+                              title="{{ $locale === 'bn' ? ($sib->title_bn ?? $sib->title) : $sib->title }}"></span>
+                    @else
+                        <a href="{{ route('study.page', [$topic, $sib->slug]) }}{{ $langQBar }}"
+                           title="{{ ($i + 1) }}. {{ $locale === 'bn' ? ($sib->title_bn ?? $sib->title) : $sib->title }}"
+                           class="flex-1 h-1.5 rounded-full {{ $i < $currentIndex ? 'bg-cyan-500/40 hover:bg-cyan-400' : 'bg-zinc-800 hover:bg-zinc-600' }}"></a>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
 
 @auth
     @if (auth()->user()->is_admin ?? false)
