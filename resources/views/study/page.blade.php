@@ -59,26 +59,66 @@
         {!! $body !!}
     </article>
 
-    @if ($prev || $next)
-        @php $langQ = $locale === 'bn' ? '?lang=bn' : ''; @endphp
-        <nav class="max-w-3xl mx-auto mt-16 pt-8 border-t border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            @if ($prev)
-                <a href="{{ route('study.page', [$topic, $prev]) }}{{ $langQ }}"
-                   class="group block bg-zinc-900/60 border border-zinc-800 rounded-xl px-5 py-4 hover:border-cyan-500/50 transition">
-                    <div class="text-zinc-500 text-xs mb-1">&larr; {{ $locale === 'bn' ? 'পূর্ববর্তী' : 'Previous' }}</div>
-                    <div class="text-zinc-200 group-hover:text-cyan-400">{{ $locale === 'bn' ? ($prev->title_bn ?? $prev->title) : $prev->title }}</div>
-                </a>
-            @else
-                <span></span>
-            @endif
+    @if ($siblings->count() > 1)
+        @php
+            $langQ    = $locale === 'bn' ? '?lang=bn' : '';
+            $total    = $siblings->count();
+            $current  = $currentIndex + 1; // 1-based position
+            // Windowed page list: always show first & last, current ± 2, with null = ellipsis.
+            $window = [];
+            for ($i = 1; $i <= $total; $i++) {
+                if ($i === 1 || $i === $total || abs($i - $current) <= 2) {
+                    $window[] = $i;
+                } elseif (end($window) !== null) {
+                    $window[] = null;
+                }
+            }
+        @endphp
 
-            @if ($next)
-                <a href="{{ route('study.page', [$topic, $next]) }}{{ $langQ }}"
-                   class="group block bg-zinc-900/60 border border-zinc-800 rounded-xl px-5 py-4 hover:border-cyan-500/50 transition sm:text-right">
-                    <div class="text-zinc-500 text-xs mb-1">{{ $locale === 'bn' ? 'পরবর্তী' : 'Next' }} &rarr;</div>
-                    <div class="text-zinc-200 group-hover:text-cyan-400">{{ $locale === 'bn' ? ($next->title_bn ?? $next->title) : $next->title }}</div>
-                </a>
-            @endif
+        <nav class="max-w-3xl mx-auto mt-16 pt-8 border-t border-zinc-800">
+            <div class="flex items-center justify-between mb-4">
+                <p class="text-zinc-500 text-sm">
+                    {{ $locale === 'bn' ? 'পৃষ্ঠা' : 'Page' }} {{ $current }} / {{ $total }}
+                </p>
+                <div class="flex gap-2">
+                    @if ($prev)
+                        <a href="{{ route('study.page', [$topic, $prev]) }}{{ $langQ }}"
+                           class="px-3 py-1.5 text-sm rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-400">
+                            &larr; {{ $locale === 'bn' ? 'পূর্ববর্তী' : 'Prev' }}
+                        </a>
+                    @endif
+                    @if ($next)
+                        <a href="{{ route('study.page', [$topic, $next]) }}{{ $langQ }}"
+                           class="px-3 py-1.5 text-sm rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-400">
+                            {{ $locale === 'bn' ? 'পরবর্তী' : 'Next' }} &rarr;
+                        </a>
+                    @endif
+                </div>
+            </div>
+
+            <ul class="flex flex-wrap gap-2">
+                @foreach ($window as $pos)
+                    @if ($pos === null)
+                        <li class="px-3 py-1.5 text-sm text-zinc-500">…</li>
+                    @else
+                        @php $sib = $siblings[$pos - 1]; @endphp
+                        <li>
+                            @if ($pos === $current)
+                                <span aria-current="page"
+                                      class="inline-block px-3 py-1.5 text-sm rounded-lg border border-cyan-500 bg-cyan-500 text-zinc-950 font-medium">
+                                    {{ $pos }}
+                                </span>
+                            @else
+                                <a href="{{ route('study.page', [$topic, $sib->slug]) }}{{ $langQ }}"
+                                   title="{{ $locale === 'bn' ? ($sib->title_bn ?? $sib->title) : $sib->title }}"
+                                   class="inline-block px-3 py-1.5 text-sm rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-400">
+                                    {{ $pos }}
+                                </a>
+                            @endif
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
         </nav>
     @endif
 </main>

@@ -42,21 +42,17 @@ class StudyController extends Controller
 
         $locale = $request->query('lang') === 'bn' && $page->hasBangla() ? 'bn' : 'en';
 
-        // Neighbors follow the same order as the topic index: page_number asc, id as tiebreaker.
-        $prev = $topic->pages()->published()
-            ->where(fn ($q) => $q
-                ->where('page_number', '<', $page->page_number)
-                ->orWhere(fn ($q) => $q->where('page_number', $page->page_number)->where('id', '<', $page->id)))
-            ->orderByDesc('page_number')->orderByDesc('id')
-            ->first();
-
-        $next = $topic->pages()->published()
-            ->where(fn ($q) => $q
-                ->where('page_number', '>', $page->page_number)
-                ->orWhere(fn ($q) => $q->where('page_number', $page->page_number)->where('id', '>', $page->id)))
+        // Full ordered list drives both prev/next and the numbered pagination bar.
+        $siblings = $topic->pages()->published()
             ->orderBy('page_number')->orderBy('id')
-            ->first();
+            ->get(['id', 'slug', 'title', 'title_bn', 'page_number']);
 
-        return view('study.page', compact('topic', 'page', 'locale', 'prev', 'next'));
+        $currentIndex = $siblings->search(fn ($p) => $p->id === $page->id);
+        $prev = $currentIndex > 0 ? $siblings[$currentIndex - 1] : null;
+        $next = $currentIndex !== false && $currentIndex < $siblings->count() - 1
+            ? $siblings[$currentIndex + 1]
+            : null;
+
+        return view('study.page', compact('topic', 'page', 'locale', 'prev', 'next', 'siblings', 'currentIndex'));
     }
 }
