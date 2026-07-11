@@ -58,5 +58,28 @@
     <article class="prose prose-invert max-w-none">
         {!! $body !!}
     </article>
+
+    @if ($prev || $next)
+        @php $langQ = $locale === 'bn' ? '?lang=bn' : ''; @endphp
+        <nav class="max-w-3xl mx-auto mt-16 pt-8 border-t border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            @if ($prev)
+                <a href="{{ route('study.page', [$topic, $prev]) }}{{ $langQ }}"
+                   class="group block bg-zinc-900/60 border border-zinc-800 rounded-xl px-5 py-4 hover:border-cyan-500/50 transition">
+                    <div class="text-zinc-500 text-xs mb-1">&larr; {{ $locale === 'bn' ? 'পূর্ববর্তী' : 'Previous' }}</div>
+                    <div class="text-zinc-200 group-hover:text-cyan-400">{{ $locale === 'bn' ? ($prev->title_bn ?? $prev->title) : $prev->title }}</div>
+                </a>
+            @else
+                <span></span>
+            @endif
+
+            @if ($next)
+                <a href="{{ route('study.page', [$topic, $next]) }}{{ $langQ }}"
+                   class="group block bg-zinc-900/60 border border-zinc-800 rounded-xl px-5 py-4 hover:border-cyan-500/50 transition sm:text-right">
+                    <div class="text-zinc-500 text-xs mb-1">{{ $locale === 'bn' ? 'পরবর্তী' : 'Next' }} &rarr;</div>
+                    <div class="text-zinc-200 group-hover:text-cyan-400">{{ $locale === 'bn' ? ($next->title_bn ?? $next->title) : $next->title }}</div>
+                </a>
+            @endif
+        </nav>
+    @endif
 </main>
 @endsection

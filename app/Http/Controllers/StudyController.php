@@ -40,6 +40,21 @@ class StudyController extends Controller
 
         $locale = $request->query('lang') === 'bn' && $page->hasBangla() ? 'bn' : 'en';
 
-        return view('study.page', compact('topic', 'page', 'locale'));
+        // Neighbors follow the same order as the topic index: newest first, id as tiebreaker.
+        $prev = $topic->pages()->published()
+            ->where(fn ($q) => $q
+                ->where('published_at', '>', $page->published_at)
+                ->orWhere(fn ($q) => $q->where('published_at', $page->published_at)->where('id', '<', $page->id)))
+            ->orderBy('published_at')->orderByDesc('id')
+            ->first();
+
+        $next = $topic->pages()->published()
+            ->where(fn ($q) => $q
+                ->where('published_at', '<', $page->published_at)
+                ->orWhere(fn ($q) => $q->where('published_at', $page->published_at)->where('id', '>', $page->id)))
+            ->orderByDesc('published_at')->orderBy('id')
+            ->first();
+
+        return view('study.page', compact('topic', 'page', 'locale', 'prev', 'next'));
     }
 }
