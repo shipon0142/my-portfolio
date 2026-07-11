@@ -43,6 +43,7 @@ class UpdatePageRequest extends FormRequest
                                           ->where('topic_id', $topicId)
                                           ->ignore($pageId)],
             'template'            => ['required', 'string', Rule::in(array_keys(config('study.templates')))],
+            'page_number'         => ['nullable', 'integer', 'min:0'],
             'html_content'        => ['required', 'string', 'min:1'],
             'meta_title'          => ['nullable', 'string', 'max:180'],
             'meta_description'    => ['nullable', 'string', 'max:320'],

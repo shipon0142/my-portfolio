@@ -14,7 +14,7 @@ class PageController extends Controller
 {
     public function index(Topic $topic)
     {
-        $pages = $topic->pages()->orderByDesc('updated_at')->get();
+        $pages = $topic->pages()->orderBy('page_number')->orderBy('id')->get();
         return view('admin.study.pages.index', compact('topic', 'pages'));
     }
 

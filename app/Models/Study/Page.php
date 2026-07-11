@@ -14,7 +14,7 @@ class Page extends Model
     protected $table = 'study_pages';
 
     protected $fillable = [
-        'topic_id', 'title', 'slug', 'template',
+        'topic_id', 'title', 'slug', 'template', 'page_number',
         'html_content', 'meta_title', 'meta_description',
         'status', 'published_at',
         'title_bn', 'html_content_bn', 'meta_title_bn', 'meta_description_bn',
@@ -22,6 +22,7 @@ class Page extends Model
 
     protected $casts = [
         'topic_id'     => 'int',
+        'page_number'  => 'int',
         'published_at' => 'datetime',
     ];
 

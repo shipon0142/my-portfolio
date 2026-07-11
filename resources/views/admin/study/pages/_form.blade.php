@@ -62,6 +62,14 @@
         </div>
 
         <div>
+            <label class="block text-sm text-zinc-400 mb-1">Page number</label>
+            <input type="number" min="0" name="page_number" value="{{ old('page_number', $page->page_number) }}"
+                class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">
+            <p class="text-xs text-zinc-500 mt-1">Controls ordering within the topic (lower = earlier).</p>
+            @error('page_number') <p class="text-red-400 text-sm mt-1">{{ $message }}</p> @enderror
+        </div>
+
+        <div>
             <label class="block text-sm text-zinc-400 mb-1">Status</label>
             <select name="status" class="w-full rounded-lg bg-zinc-950 border border-zinc-800 px-3 py-2 focus:border-cyan-500 outline-none">
                 <option value="draft"     @selected(old('status', $page->status) === 'draft')>Draft</option>

@@ -17,6 +17,7 @@
     <table class="w-full text-sm">
         <thead class="bg-zinc-900 text-zinc-400">
             <tr>
+                <th class="text-left px-4 py-3 w-16">#</th>
                 <th class="text-left px-4 py-3">Title</th>
                 <th class="text-left px-4 py-3">Template</th>
                 <th class="text-left px-4 py-3">Status</th>
@@ -26,6 +27,7 @@
         <tbody>
         @forelse ($pages as $page)
             <tr class="border-t border-zinc-800">
+                <td class="px-4 py-3 text-zinc-500">{{ $page->page_number }}</td>
                 <td class="px-4 py-3">{{ $page->title }}</td>
                 <td class="px-4 py-3 text-zinc-500">{{ $page->template }}</td>
                 <td class="px-4 py-3 uppercase text-xs tracking-widest {{ $page->status === 'published' ? 'text-cyan-400' : 'text-zinc-500' }}">
@@ -52,7 +54,7 @@
                 </td>
             </tr>
         @empty
-            <tr><td colspan="4" class="px-4 py-6 text-zinc-500">No pages yet.</td></tr>
+            <tr><td colspan="5" class="px-4 py-6 text-zinc-500">No pages yet.</td></tr>
         @endforelse
         </tbody>
     </table>

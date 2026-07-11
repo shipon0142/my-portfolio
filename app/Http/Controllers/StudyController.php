@@ -20,7 +20,9 @@ class StudyController extends Controller
 
     public function show(Topic $topic)
     {
-        $pages = $topic->pages()->published()->orderByDesc('published_at')->get();
+        $pages = $topic->pages()->published()
+            ->orderBy('page_number')->orderBy('id')
+            ->get();
 
         if ($pages->isEmpty()) {
             abort(404);
@@ -40,19 +42,19 @@ class StudyController extends Controller
 
         $locale = $request->query('lang') === 'bn' && $page->hasBangla() ? 'bn' : 'en';
 
-        // Neighbors follow the same order as the topic index: newest first, id as tiebreaker.
+        // Neighbors follow the same order as the topic index: page_number asc, id as tiebreaker.
         $prev = $topic->pages()->published()
             ->where(fn ($q) => $q
-                ->where('published_at', '>', $page->published_at)
-                ->orWhere(fn ($q) => $q->where('published_at', $page->published_at)->where('id', '<', $page->id)))
-            ->orderBy('published_at')->orderByDesc('id')
+                ->where('page_number', '<', $page->page_number)
+                ->orWhere(fn ($q) => $q->where('page_number', $page->page_number)->where('id', '<', $page->id)))
+            ->orderByDesc('page_number')->orderByDesc('id')
             ->first();
 
         $next = $topic->pages()->published()
             ->where(fn ($q) => $q
-                ->where('published_at', '<', $page->published_at)
-                ->orWhere(fn ($q) => $q->where('published_at', $page->published_at)->where('id', '>', $page->id)))
-            ->orderByDesc('published_at')->orderBy('id')
+                ->where('page_number', '>', $page->page_number)
+                ->orWhere(fn ($q) => $q->where('page_number', $page->page_number)->where('id', '>', $page->id)))
+            ->orderBy('page_number')->orderBy('id')
             ->first();
 
         return view('study.page', compact('topic', 'page', 'locale', 'prev', 'next'));
