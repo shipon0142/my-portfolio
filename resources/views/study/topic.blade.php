@@ -16,7 +16,12 @@
             <li>
                 <a href="{{ route('study.page', [$topic, $page]) }}"
                    class="flex items-center justify-between bg-zinc-900/60 border border-zinc-800 rounded-xl px-5 py-4 hover:border-cyan-500/50 transition">
-                    <span class="text-lg">{{ $page->title }}</span>
+                    <span class="flex items-center gap-4">
+                        <span class="inline-flex items-center justify-center min-w-8 h-8 px-2 rounded-lg border border-zinc-800 bg-zinc-950 text-zinc-400 text-sm font-mono">
+                            {{ $loop->iteration }}
+                        </span>
+                        <span class="text-lg">{{ $page->title }}</span>
+                    </span>
                     <span class="text-zinc-500 text-sm">{{ $page->published_at?->format('M j, Y') }}</span>
                 </a>
             </li>
