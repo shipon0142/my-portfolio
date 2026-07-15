@@ -411,7 +411,7 @@
     ];
 
     $experience = [
-        [
+        ...(env('SHOW_ROVEXLABS', false) ? [[
             'company'  => 'Rovex Labs',
             'role'     => 'Founder',
             'location' => 'rovexlabs.com',
@@ -421,7 +421,7 @@
                 'Founded Rovex Labs to build mobile-first products at the edge of AI and everyday workflows.',
                 'Set product direction, architecture, and engineering standards from day one.',
             ],
-        ],
+        ]] : []),
         [
             'company'  => 'Envobyte Ltd',
             'role'     => 'Senior Software Engineer · Team Lead',
@@ -585,6 +585,7 @@
             </div>
 
             <div class="mt-14 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 max-w-3xl">
+                @if(env('SHOW_ROVEXLABS', false))
                 <div>
                     <p class="label-mono">Founder</p>
                     <p class="mt-1.5 text-[13.5px] font-semibold tracking-tight text-ink-primary">
@@ -592,6 +593,7 @@
                     </p>
                     <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
                 </div>
+                @endif
                 <div>
                     <p class="label-mono">Currently</p>
                     <p class="mt-1.5 text-[13.5px] text-ink-primary">Senior Software Engineer</p>
