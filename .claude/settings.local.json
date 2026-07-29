@@ -49,7 +49,10 @@
       "Bash(composer require *)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(composer --version)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "WebFetch(domain:cdn.ckeditor.com)"
     ],
     "deny": [
       "Bash(git commit *)",
