@@ -496,7 +496,7 @@
                 <a href="#{{ $item['id'] }}" class="nav-link px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-secondary hover:text-ink-primary transition-colors">{{ $item['label'] }}</a>
             @endforeach
             <span class="mx-2 h-4 w-px bg-border" aria-hidden="true"></span>
-            <a href="/Shipon_Sarder_Resume_2026.pdf" download class="px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-primary border border-border hover:border-border-strong transition-colors">CV</a>
+            <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-primary border border-border hover:border-border-strong transition-colors">CV</a>
             <button type="button" class="ml-1 p-1.5 text-ink-secondary hover:text-accent transition-colors" data-theme-toggle aria-label="Switch theme">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
             </button>
@@ -511,7 +511,7 @@
                 <a href="#{{ $item['id'] }}" class="block py-2.5 border-b border-border text-ink-secondary text-[14px]" data-mobile-link>{{ $item['label'] }}</a>
             @endforeach
             <div class="mt-4 flex items-center justify-between">
-                <a href="/Shipon_Sarder_Resume_2026.pdf" download class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded-md px-3 py-2">
+                <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded-md px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
                     <span>Download CV</span>
                 </a>
@@ -575,7 +575,7 @@
                     View skills
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="/Shipon_Sarder_Resume_2026.pdf" download class="inline-flex items-center gap-2 text-[13.5px] font-medium text-ink-primary border border-border hover:border-border-strong transition-colors rounded-md px-4 py-2.5">
+                <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="inline-flex items-center gap-2 text-[13.5px] font-medium text-ink-primary border border-border hover:border-border-strong transition-colors rounded-md px-4 py-2.5">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
                     Download CV
                 </a>
