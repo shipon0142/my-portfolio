@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Shipon Sarder — Software Engineer building mobile-first products that scale. 100K+ installs, 5+ years shipping Android and Flutter.">
+    <meta name="description" content="Shipon Sarder — Senior Mobile Engineer building Android, Flutter & KMP apps. 6+ years shipping production apps, team lead at Envobyte.">
     <link rel="canonical" href="https://shiponsarder.com/">
     <meta name="author" content="Shipon Sarder">
     <meta name="robots" content="index, follow, max-image-preview:large">
@@ -346,7 +346,7 @@
     $competencies = [
         [
             'label'   => 'Mobile Development',
-            'summary' => 'Android (Kotlin, Java, Compose) & Flutter — production apps for eCommerce, edtech, K-12.',
+            'summary' => 'Android (Kotlin, Java) & Flutter & KMP — production apps for eCommerce, edtech, and more.',
             'icon'    => 'phone',
         ],
         [
@@ -367,20 +367,20 @@
     ];
 
     $skills = [
-        ['group' => 'Languages',    'items' => ['Kotlin', 'Java', 'Dart', 'C', 'C++', 'JavaScript']],
-        ['group' => 'Mobile & UI',  'items' => ['Flutter', 'Jetpack Compose', 'Android SDK', 'XML', 'Material 3']],
-        ['group' => 'Architecture', 'items' => ['Clean Architecture', 'MVVM', 'MVP', 'BLoC', 'Provider', 'Riverpod']],
-        ['group' => 'Backend & Data','items' => ['REST APIs', 'Firebase', 'Firestore', 'Realtime DB', 'Room', 'SQLite']],
-        ['group' => 'Delivery',     'items' => ['CI/CD', 'Fastlane', 'GitHub Actions', 'Play Console', 'App Store Connect']],
+        ['group' => 'Languages',    'items' => ['Dart', 'Kotlin', 'Java', 'PHP']],
+        ['group' => 'Mobile & Architecture', 'items' => ['Flutter', 'Native Android', 'Kotlin Multiplatform (KMP)', 'Jetpack', 'BLoC', 'Clean Architecture', 'MVVM']],
+        ['group' => 'Backend & ML', 'items' => ['Laravel', 'MySQL', 'Firebase', 'REST APIs', 'Google Cloud Vision', 'ML Kit', 'Image Processing']],
+        ['group' => 'Tools & Practices', 'items' => ['Git', 'CI/CD', 'Play Store Publishing', 'App Store Publishing', 'Unit Testing', 'AI-Assisted Development']],
         ['group' => 'Observability','items' => ['Sentry', 'Firebase Crashlytics', 'Analytics', 'OneSignal']],
+        ['group' => 'Third-party',  'items' => ['Firebase Realtime DB', 'Firestore', 'Room', 'SQLite', 'SDK Integration']],
     ];
 
     // Dummy personal projects — replace later
     $personal = [
         [
             'name'    => 'PhotoNex AI',
-            'summary' => 'AI-powered photo tools for creators — enhance, edit, and generate imagery on the web.',
-            'tech'    => ['Next.js', 'TypeScript', 'AI'],
+            'summary' => 'AI photo styling app with image generation and processing, backed by a prompt marketplace and Google Play Billing.',
+            'tech'    => ['Kotlin Multiplatform', 'Laravel', 'Google Play Billing'],
             'status'  => 'Live',
             'url'     => 'https://www.photonexai.com/',
         ],
@@ -496,7 +496,7 @@
                 <a href="#{{ $item['id'] }}" class="nav-link px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-secondary hover:text-ink-primary transition-colors">{{ $item['label'] }}</a>
             @endforeach
             <span class="mx-2 h-4 w-px bg-border" aria-hidden="true"></span>
-            <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-primary border border-border hover:border-border-strong transition-colors">CV</a>
+            <a href="/Shipon_Sarder_Resume.pdf" download class="px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-primary border border-border hover:border-border-strong transition-colors">CV</a>
             <button type="button" class="ml-1 p-1.5 text-ink-secondary hover:text-accent transition-colors" data-theme-toggle aria-label="Switch theme">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
             </button>
@@ -511,7 +511,7 @@
                 <a href="#{{ $item['id'] }}" class="block py-2.5 border-b border-border text-ink-secondary text-[14px]" data-mobile-link>{{ $item['label'] }}</a>
             @endforeach
             <div class="mt-4 flex items-center justify-between">
-                <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded-md px-3 py-2">
+                <a href="/Shipon_Sarder_Resume.pdf" download class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded-md px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
                     <span>Download CV</span>
                 </a>
@@ -557,13 +557,13 @@
                     <div class="md:col-span-8 lg:col-span-9 md:order-1">
                         <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
                             <p>
-                                Shipon Sarder is a Senior Mobile Application Developer with 5+ years of hands-on experience building native Android and cross-platform Flutter applications. He has led cross-functional engineering teams and brings strong technical depth in Clean Architecture, MVVM, MVP, and modern state management (BLoC, Riverpod, Provider).
+                                Shipon Sarder is a Senior Mobile Engineer and team lead with 6+ years building Android and iOS apps across native Kotlin and Flutter. He has shipped products end to end across both native and cross-platform, owning architecture decisions and keeping releases fast and reliable.
                             </p>
                             <p>
-                                His impact spans the full app lifecycle: architecting a cross-border eCommerce app, implementing CI/CD pipelines with automated Play Store and App Store deployment, and integrating real-time error monitoring via Sentry and Discord. He's also worked at the intersection of mobile and AI, applying Cloud Vision and ML Kit for image processing.
+                                His work spans Clean Architecture, BLoC, Kotlin Multiplatform (KMP), CI/CD pipelines, and production AI features using Google Cloud Vision, ML Kit, and on-device image processing. He built and launched PhotoNexAI — an AI photo styling app in KMP backed by a Laravel web platform.
                             </p>
                             <p>
-                                A mentor at heart, Shipon has driven team productivity through rigorous code reviews and documentation standards, while consistently delivering apps praised for performance and user experience. He holds a BSc in Computer Science and Engineering and is a certified Android Application Developer.
+                                Alongside engineering, Shipon leads code reviews, mentors junior developers, and drives technical direction across teams. He holds a BSc in Computer Science and Engineering and is a certified Android Application Developer.
                             </p>
                         </div>
                     </div>
@@ -575,7 +575,7 @@
                     View skills
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="/Shipon_Sarder_Flutter_Developer.pdf" download class="inline-flex items-center gap-2 text-[13.5px] font-medium text-ink-primary border border-border hover:border-border-strong transition-colors rounded-md px-4 py-2.5">
+                <a href="/Shipon_Sarder_Resume.pdf" download class="inline-flex items-center gap-2 text-[13.5px] font-medium text-ink-primary border border-border hover:border-border-strong transition-colors rounded-md px-4 py-2.5">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
                     Download CV
                 </a>
@@ -601,8 +601,8 @@
                 </div>
                 <div>
                     <p class="label-mono">Experience</p>
-                    <p class="mt-1.5 text-[13.5px] text-ink-primary">5+ years shipping</p>
-                    <p class="text-[13px] text-ink-secondary">Android · Flutter</p>
+                    <p class="mt-1.5 text-[13.5px] text-ink-primary">6+ years shipping</p>
+                    <p class="text-[13px] text-ink-secondary">Android · Flutter · KMP</p>
                 </div>
             </div>
         </div>
