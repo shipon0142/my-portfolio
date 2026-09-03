@@ -361,21 +361,20 @@
         ],
         [
             'label'   => 'Leadership',
-            'summary' => 'Currently leading nine engineers — code review, mentorship, release engineering.',
+            'summary' => 'Leading a cross-functional team — code review, mentorship, release engineering.',
             'icon'    => 'users',
         ],
     ];
 
     $skills = [
         ['group' => 'Languages',    'items' => ['Dart', 'Kotlin', 'Java', 'PHP']],
-        ['group' => 'Mobile & Architecture', 'items' => ['Flutter', 'Native Android', 'Kotlin Multiplatform (KMP)', 'Jetpack', 'BLoC', 'Clean Architecture', 'MVVM']],
+        ['group' => 'Mobile & Architecture', 'items' => ['Flutter', 'Native Android', 'Kotlin Multiplatform (KMP)', 'Jetpack', 'BLoC', 'Clean Architecture', 'MVVM', 'Riverpod']],
         ['group' => 'Backend & ML', 'items' => ['Laravel', 'MySQL', 'Firebase', 'REST APIs', 'Google Cloud Vision', 'ML Kit', 'Image Processing']],
         ['group' => 'Tools & Practices', 'items' => ['Git', 'CI/CD', 'Play Store Publishing', 'App Store Publishing', 'Unit Testing', 'AI-Assisted Development']],
         ['group' => 'Observability','items' => ['Sentry', 'Firebase Crashlytics', 'Analytics', 'OneSignal']],
         ['group' => 'Third-party',  'items' => ['Firebase Realtime DB', 'Firestore', 'Room', 'SQLite', 'SDK Integration']],
     ];
 
-    // Dummy personal projects — replace later
     $personal = [
         [
             'name'    => 'PhotoNex AI',
@@ -383,30 +382,6 @@
             'tech'    => ['Kotlin Multiplatform', 'Laravel', 'Google Play Billing'],
             'status'  => 'Live',
             'url'     => 'https://www.photonexai.com/',
-        ],
-        [
-            'name'    => 'TaskFlow',
-            'summary' => 'Local-first productivity app with offline sync and calendar integration.',
-            'tech'    => ['Kotlin', 'Jetpack Compose', 'Room'],
-            'status'  => 'In progress',
-        ],
-        [
-            'name'    => 'MindMate',
-            'summary' => 'On-device journaling with sentiment insights, no data leaves the phone.',
-            'tech'    => ['Flutter', 'TensorFlow Lite'],
-            'status'  => 'In progress',
-        ],
-        [
-            'name'    => 'CodeMetrics',
-            'summary' => 'CLI that reports code health signals across a git history.',
-            'tech'    => ['Go', 'libgit2'],
-            'status'  => 'Coming soon',
-        ],
-        [
-            'name'    => 'APIHub',
-            'summary' => 'A minimal API workbench for mobile engineers — collections, mocks, share links.',
-            'tech'    => ['TypeScript', 'Next.js'],
-            'status'  => 'Coming soon',
         ],
     ];
 
@@ -429,7 +404,7 @@
             'period'   => 'Jan 2026 — Present',
             'current'  => true,
             'bullets'  => [
-                'Lead a cross-functional team of nine engineers.',
+                'Lead a cross-functional engineering team.',
                 'Build on Cloud Vision, ML Kit, and image-processing pipelines.',
             ],
         ],
@@ -440,10 +415,10 @@
             'period'   => 'Dec 2023 — Dec 2025',
             'current'  => false,
             'bullets'  => [
-                'Shipped a cross-border eCommerce app to 100K+ installs in three months.',
+                'Shipped a cross-border eCommerce app to both the App Store and Google Play.',
                 'Optimized for wide device coverage on iOS and Android.',
                 'Introduced Clean Architecture with BLoC for maintainable UI-logic separation.',
-                'Built CI/CD for automated Play Store and App Store releases; Sentry + Discord alerting.',
+                'Built CI/CD for automated Play Store and App Store releases; Sentry crash monitoring.',
                 'Mentored junior engineers and ran code reviews.',
             ],
         ],
@@ -454,8 +429,8 @@
             'period'   => 'Mar 2021 — Nov 2023',
             'current'  => false,
             'bullets'  => [
-                'Built EduTune (Java) — live classes, LMS, online reader.',
-                'Shipped Mojaru (Kotlin) for school administration workflows.',
+                'Built an e-learning platform in Java — live classes, LMS, online reader.',
+                'Built a school administration app in Kotlin.',
                 'Integrated a customized Zoom SDK for live classroom sessions.',
                 'Wired Firebase Realtime DB for messaging and OneSignal for push.',
             ],
@@ -664,14 +639,9 @@
     {{-- Personal Projects (dummy data) --}}
     <section id="projects" class="py-20 md:py-24 border-t border-border">
         <div class="max-w-content mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-                <div class="max-w-2xl">
-                    <p class="label-mono">Personal Projects</p>
-                    <h2 class="mt-3 section-title">Things I'm building.</h2>
-                </div>
-                <p class="text-ink-secondary max-w-md text-[14px] leading-relaxed">
-                    Side projects and experiments. Placeholder cards for now — real projects landing soon.
-                </p>
+            <div class="max-w-2xl mb-10">
+                <p class="label-mono">Personal Projects</p>
+                <h2 class="mt-3 section-title">Things I'm building.</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -842,12 +812,6 @@
                     <p class="label-mono">Send a message</p>
                         <form data-contact-form action="{{ route('contact.send') }}" method="POST" class="mt-6 space-y-5" novalidate>
                             @csrf
-
-                            {{-- Honeypot: off-screen, ignored by real users --}}
-                            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-                                <label for="contact-website">Website</label>
-                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" value="">
-                            </div>
 
                             <div>
                                 <label for="contact-name" class="label-mono block">Name</label>
