@@ -382,6 +382,7 @@
             'tech'    => ['Kotlin Multiplatform', 'Laravel', 'Google Play Billing'],
             'status'  => 'Live',
             'url'     => 'https://www.photonexai.com/',
+            'logo'    => '/images/projects/photonexai.jpg',
         ],
         [
             'name'    => 'Bear Sweet Puzzle',
@@ -389,6 +390,7 @@
             'tech'    => ['Android', 'Kotlin'],
             'status'  => 'Live',
             'url'     => 'https://play.google.com/store/apps/details?id=com.bear.sweet.puzzle',
+            'logo'    => '/images/projects/bear-sweet-puzzle.png',
         ],
         [
             'name'    => 'Clipano',
@@ -396,6 +398,15 @@
             'tech'    => ['Kotlin', 'Jetpack', 'Laravel'],
             'status'  => 'Upcoming',
             'url'     => 'https://clipano.com/',
+            'logo'    => '/images/projects/clipano.png',
+        ],
+        [
+            'name'    => 'SendMe BD',
+            'summary' => 'A Bangladesh-focused delivery and sending service app published on Google Play.',
+            'tech'    => ['Android', 'Kotlin'],
+            'status'  => 'Live',
+            'url'     => 'https://play.google.com/store/apps/details?id=com.sendme.bd',
+            'logo'    => '/images/projects/sendme-bd.png',
         ],
     ];
 
@@ -671,7 +682,12 @@
                 @foreach ($personal as $p)
                     <article class="card-surface flex flex-col p-5">
                         <div class="flex items-center justify-between">
-                            <p class="label-mono">{{ $p['status'] }}</p>
+                            <div class="flex items-center gap-2.5">
+                                @if (!empty($p['logo']))
+                                    <img src="{{ $p['logo'] }}" alt="{{ $p['name'] }} logo" class="w-8 h-8 rounded-lg object-cover flex-shrink-0">
+                                @endif
+                                <p class="label-mono">{{ $p['status'] }}</p>
+                            </div>
                             @if (!empty($p['url']))
                                 <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent transition-colors" aria-label="Visit {{ $p['name'] }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>

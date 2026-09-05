@@ -52,7 +52,11 @@
       "Bash(node *)",
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_context7_context7__query-docs",
-      "WebFetch(domain:cdn.ckeditor.com)"
+      "WebFetch(domain:cdn.ckeditor.com)",
+      "Bash(cp \"C:/Users/shipo/OneDrive/Desktop/Aso/PN/Send me/Clipano.png\" \"C:/laragon/www/my-portfolio/public/images/projects/clipano.png\")",
+      "Bash(cp \"C:/Users/shipo/OneDrive/Desktop/Aso/PN/Send me/bear match.png\" \"C:/laragon/www/my-portfolio/public/images/projects/bear-sweet-puzzle.png\")",
+      "Bash(cp \"C:/Users/shipo/OneDrive/Desktop/Aso/PN/Send me/photonexai.jpg\" \"C:/laragon/www/my-portfolio/public/images/projects/photonexai.jpg\")",
+      "Bash(cp \"C:/Users/shipo/OneDrive/Desktop/Aso/PN/Send me/send me.png\" \"C:/laragon/www/my-portfolio/public/images/projects/sendme-bd.png\")"
     ],
     "deny": [
       "Bash(git commit *)",
