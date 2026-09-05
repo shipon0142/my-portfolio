@@ -383,6 +383,20 @@
             'status'  => 'Live',
             'url'     => 'https://www.photonexai.com/',
         ],
+        [
+            'name'    => 'Bear Sweet Puzzle',
+            'summary' => 'A fun and colourful bear-themed puzzle game published on Google Play.',
+            'tech'    => ['Android', 'Kotlin'],
+            'status'  => 'Live',
+            'url'     => 'https://play.google.com/store/apps/details?id=com.bear.sweet.puzzle',
+        ],
+        [
+            'name'    => 'Clipano',
+            'summary' => 'AI-powered video editing application that streamlines the editing workflow with intelligent automation.',
+            'tech'    => ['Kotlin', 'Jetpack', 'Laravel'],
+            'status'  => 'Upcoming',
+            'url'     => 'https://clipano.com/',
+        ],
     ];
 
     $experience = [
