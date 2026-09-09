@@ -556,16 +556,16 @@
                     <div class="md:col-span-8 lg:col-span-9 md:order-1">
                         <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
                             <p>
-                                I'm a mobile engineer who loves building apps that feel fast, look clean, and just work. I specialize in Android and iOS with Kotlin, Java, and Flutter — native Android is my home ground, and Flutter is where I move fast across platforms.
+                                I'm a mobile engineer who loves building apps that feel fast, look clean, and just work. I specialize in Android and iOS with Kotlin, Java, and Flutter. Native Android is my home ground, and Flutter is where I move fast across platforms.
                             </p>
                             <p>
-                                I've shipped products to the Play Store and App Store across eCommerce, e-learning, and AI-powered experiences, working with tools like Google Cloud Vision and ML Kit. I care about architecture — Clean Architecture, BLoC, Riverpod, MVVM — because clean code today saves chaos tomorrow.
+                                I've shipped products to the Play Store and App Store across eCommerce, e-learning, and AI-powered experiences, working with tools like Google Cloud Vision and ML Kit. Architecture matters to me a lot. I stick with Clean Architecture, BLoC, Riverpod, and MVVM, because clean code today saves you from chaos tomorrow.
                             </p>
                             <p>
-                                But I don't stop at the app. I also build the backend that powers it — REST APIs, databases, and server logic with Laravel and Firebase — so I can take a product from idea to a fully working system, front to back. That full-picture view helps me make better decisions on both sides.
+                                But I don't stop at the app. I also build the backend that powers it, writing REST APIs, database logic, and server code with Laravel and Firebase. That means I can take a product all the way from an idea to a fully working system, front to back. Seeing both sides helps me make smarter calls on each of them.
                             </p>
                             <p>
-                                Beyond the code, I lead reviews, mentor developers, and love turning messy, complex problems into simple, elegant solutions. Always up for building something great.
+                                Beyond the code, I lead reviews, mentor other developers, and genuinely enjoy turning messy, complicated problems into simple, clean solutions. Always up for building something good.
                             </p>
                         </div>
                     </div>
