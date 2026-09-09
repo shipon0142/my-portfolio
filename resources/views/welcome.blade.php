@@ -556,13 +556,16 @@
                     <div class="md:col-span-8 lg:col-span-9 md:order-1">
                         <div class="space-y-4 text-[15px] leading-[1.65] text-ink-secondary max-w-2xl">
                             <p>
-                                Shipon Sarder is a Senior Mobile Engineer and team lead with 6+ years building Android and iOS apps across native Kotlin and Flutter. He has shipped products end to end across both native and cross-platform, owning architecture decisions and keeping releases fast and reliable.
+                                I'm a mobile engineer who loves building apps that feel fast, look clean, and just work. I specialize in Android and iOS with Kotlin, Java, and Flutter — native Android is my home ground, and Flutter is where I move fast across platforms.
                             </p>
                             <p>
-                                His work spans Clean Architecture, BLoC, Kotlin Multiplatform (KMP), CI/CD pipelines, and production AI features using Google Cloud Vision, ML Kit, and on-device image processing. He built and launched PhotoNexAI — an AI photo styling app in KMP backed by a Laravel web platform.
+                                I've shipped products to the Play Store and App Store across eCommerce, e-learning, and AI-powered experiences, working with tools like Google Cloud Vision and ML Kit. I care about architecture — Clean Architecture, BLoC, Riverpod, MVVM — because clean code today saves chaos tomorrow.
                             </p>
                             <p>
-                                Alongside engineering, Shipon leads code reviews, mentors junior developers, and drives technical direction across teams. He holds a BSc in Computer Science and Engineering and is a certified Android Application Developer.
+                                But I don't stop at the app. I also build the backend that powers it — REST APIs, databases, and server logic with Laravel and Firebase — so I can take a product from idea to a fully working system, front to back. That full-picture view helps me make better decisions on both sides.
+                            </p>
+                            <p>
+                                Beyond the code, I lead reviews, mentor developers, and love turning messy, complex problems into simple, elegant solutions. Always up for building something great.
                             </p>
                         </div>
                     </div>
