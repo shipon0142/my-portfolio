@@ -545,10 +545,6 @@
                 Shipon Sarder<span class="text-accent">.</span>
             </h1>
 
-            <p class="mt-4 font-mono text-[13px] text-ink-secondary tracking-wide">
-                Mobile Developer · Flutter &amp; Native Android · Dart · Kotlin · Java · KMP · AI-Powered Apps
-            </p>
-
             <div class="mt-8">
                 <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
                     <div class="md:col-span-4 lg:col-span-3 md:order-2">
