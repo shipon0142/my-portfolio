@@ -34,6 +34,7 @@ class TrackController extends Controller
         'contact_whatsapp'        => '🖱 Contact — WhatsApp',
         'contact_github'          => '🖱 Contact — GitHub',
         'contact_email_icon'      => '🖱 Contact — Email (icon)',
+        'contact_phone'           => '🖱 Contact — Phone',
         // Links
         'link_rovexlabs'          => '🔗 Link — RovexLabs',
         // Projects
