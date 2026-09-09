@@ -486,13 +486,13 @@
 
 <header id="site-header" class="fixed top-0 inset-x-0 z-40 border-b border-transparent transition-colors duration-200" style="backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px);">
     <nav class="max-w-content mx-auto px-6 h-14 flex items-center justify-between" aria-label="Primary">
-        <a href="#top" class="flex items-center gap-2.5" aria-label="Shipon Sarder — home">
+        <a href="#top" data-track="nav_logo" class="flex items-center gap-2.5" aria-label="Shipon Sarder — home">
             <img src="/avatar.jpg" alt="" width="26" height="26" class="w-[26px] h-[26px] rounded-full object-cover border border-border">
             <span class="hidden sm:inline text-[13px] font-medium tracking-tight text-ink-primary">Shipon Sarder</span>
         </a>
         <div class="hidden md:flex items-center gap-0.5">
             @foreach ($nav as $item)
-                <a href="#{{ $item['id'] }}" class="nav-link px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-secondary hover:text-ink-primary transition-colors">{{ $item['label'] }}</a>
+                <a href="#{{ $item['id'] }}" data-track="nav_{{ $item['id'] }}" class="nav-link px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-secondary hover:text-ink-primary transition-colors">{{ $item['label'] }}</a>
             @endforeach
             <span class="mx-2 h-4 w-px bg-border" aria-hidden="true"></span>
             <a href="/Shipon_Sarder_Resume.pdf" download data-track="cv_download" class="px-2.5 py-1.5 rounded-md text-[12.5px] text-ink-primary border border-border hover:border-border-strong transition-colors">CV</a>
@@ -507,7 +507,7 @@
     <div id="mobile-menu" class="md:hidden hidden bg-base border-t border-border" data-mobile-menu>
         <div class="px-6 py-4">
             @foreach ($nav as $item)
-                <a href="#{{ $item['id'] }}" class="block py-2.5 border-b border-border text-ink-secondary text-[14px]" data-mobile-link>{{ $item['label'] }}</a>
+                <a href="#{{ $item['id'] }}" data-track="nav_{{ $item['id'] }}" class="block py-2.5 border-b border-border text-ink-secondary text-[14px]" data-mobile-link>{{ $item['label'] }}</a>
             @endforeach
             <div class="mt-4 flex items-center justify-between">
                 <a href="/Shipon_Sarder_Resume.pdf" download data-track="cv_download" class="inline-flex items-center gap-2 font-mono text-xs text-ink-primary border border-border rounded-md px-3 py-2">
@@ -600,7 +600,7 @@
                     <p class="mt-1.5 text-[13.5px] font-semibold tracking-tight text-ink-primary">
                         Rovex<span style="color:#4a86ff;">Labs</span>
                     </p>
-                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
+                    <a href="https://rovexlabs.com" target="_blank" rel="noopener noreferrer" data-track="link_rovexlabs" class="link-underline text-[13px] text-ink-secondary hover:text-ink-primary transition-colors">rovexlabs.com</a>
                 </div>
                 @endif
                 <div>
@@ -689,7 +689,7 @@
                                 <p class="label-mono">{{ $p['status'] }}</p>
                             </div>
                             @if (!empty($p['url']))
-                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent transition-colors" aria-label="Visit {{ $p['name'] }}">
+                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" data-track="project_{{ Str::slug($p['name'], '_') }}" class="text-ink-muted hover:text-accent transition-colors" aria-label="Visit {{ $p['name'] }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
                                 </a>
                             @else
@@ -700,7 +700,7 @@
                         </div>
                         @if (!empty($p['url']))
                             <h3 class="mt-4 text-[16px] font-medium text-ink-primary tracking-tight">
-                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-accent transition-colors">{{ $p['name'] }}</a>
+                                <a href="{{ $p['url'] }}" target="_blank" rel="noopener noreferrer" data-track="project_{{ Str::slug($p['name'], '_') }}" class="link-underline hover:text-accent transition-colors">{{ $p['name'] }}</a>
                             </h3>
                         @else
                             <h3 class="mt-4 text-[16px] font-medium text-ink-primary tracking-tight">{{ $p['name'] }}</h3>

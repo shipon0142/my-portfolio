@@ -13,18 +13,34 @@ class TrackController extends Controller
     private const ACCENT_COLOR = 561586;
 
     private const EVENT_LABELS = [
-        'page_visit'        => '🟢 Page Visit',
-        'cv_download'       => '🖱 Button — Download CV',
-        'view_skills'       => '🖱 Button — View Skills',
-        'social_linkedin'   => '🖱 Button — LinkedIn',
-        'social_whatsapp'   => '🖱 Button — WhatsApp',
-        'social_github'     => '🖱 Button — GitHub',
-        'social_email'      => '🖱 Button — Email',
-        'contact_email'     => '🖱 Contact — Email',
-        'contact_linkedin'  => '🖱 Contact — LinkedIn',
-        'contact_whatsapp'  => '🖱 Contact — WhatsApp',
-        'contact_github'    => '🖱 Contact — GitHub',
-        'contact_email_icon'=> '🖱 Contact — Email (icon)',
+        'page_visit'              => '🟢 Page Visit',
+        'cv_download'             => '🖱 Button — Download CV',
+        'view_skills'             => '🖱 Button — View Skills',
+        // Nav
+        'nav_logo'                => '🔗 Nav — Logo / Home',
+        'nav_skills'              => '🔗 Nav — Skills',
+        'nav_projects'            => '🔗 Nav — Projects',
+        'nav_journey'             => '🔗 Nav — Experience',
+        'nav_credentials'         => '🔗 Nav — Credentials',
+        'nav_contact'             => '🔗 Nav — Contact',
+        // Social (hero)
+        'social_linkedin'         => '🖱 Button — LinkedIn',
+        'social_whatsapp'         => '🖱 Button — WhatsApp',
+        'social_github'           => '🖱 Button — GitHub',
+        'social_email'            => '🖱 Button — Email',
+        // Contact section
+        'contact_email'           => '🖱 Contact — Email',
+        'contact_linkedin'        => '🖱 Contact — LinkedIn',
+        'contact_whatsapp'        => '🖱 Contact — WhatsApp',
+        'contact_github'          => '🖱 Contact — GitHub',
+        'contact_email_icon'      => '🖱 Contact — Email (icon)',
+        // Links
+        'link_rovexlabs'          => '🔗 Link — RovexLabs',
+        // Projects
+        'project_photonex_ai'     => '🚀 Project — PhotoNex AI',
+        'project_bear_sweet_puzzle' => '🚀 Project — Bear Sweet Puzzle',
+        'project_clipano'         => '🚀 Project — Clipano',
+        'project_sendme_bd'       => '🚀 Project — SendMe BD',
     ];
 
     public function __invoke(Request $request): Response
